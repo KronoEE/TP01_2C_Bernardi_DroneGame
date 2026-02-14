@@ -1,0 +1,485 @@
+fileFormatVersion: 2
+guid: 996091b65e6fe1346b16455e59fe6e89
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5940073612316156349
+    second: assetpack trees3_0
+  - first:
+      213: 3844614436328797363
+    second: assetpack trees3_1
+  - first:
+      213: 5297275593032467981
+    second: assetpack trees3_2
+  - first:
+      213: 8178406257370455580
+    second: assetpack trees3_3
+  - first:
+      213: -5367699012920987666
+    second: assetpack trees3_4
+  - first:
+      213: -1370676461377109163
+    second: assetpack trees3_5
+  - first:
+      213: 1851878380100420368
+    second: assetpack trees3_6
+  - first:
+      213: 3991511807337006704
+    second: assetpack trees3_7
+  - first:
+      213: 3620390180130860617
+    second: assetpack trees3_8
+  - first:
+      213: -4654543880662592535
+    second: assetpack trees3_9
+  - first:
+      213: 3794153164902317302
+    second: assetpack trees3_10
+  - first:
+      213: -6390066693212226509
+    second: assetpack trees3_11
+  - first:
+      213: -8764152495148450179
+    second: assetpack trees3_12
+  - first:
+      213: 6708251735503335973
+    second: assetpack trees3_13
+  - first:
+      213: -7678122734991297933
+    second: assetpack trees3_14
+  - first:
+      213: 348545391713753001
+    second: assetpack trees3_15
+  - first:
+      213: -4631324863481355091
+    second: assetpack trees3_16
+  - first:
+      213: 5773662561330324388
+    second: assetpack trees3_17
+  - first:
+      213: 5671669053420394942
+    second: assetpack trees3_18
+  - first:
+      213: 4715069755376684057
+    second: assetpack trees3_19
+  - first:
+      213: 6801254406177509914
+    second: assetpack trees3_20
+  - first:
+      213: 7194801842404473197
+    second: assetpack trees3_21
+  - first:
+      213: -1863499497939208793
+    second: assetpack trees3_22
+  - first:
+      213: -5419506254817795978
+    second: assetpack trees3_23
+  - first:
+      213: -4745157693360682976
+    second: assetpack trees3_24
+  - first:
+      213: 1125004267522692015
+    second: assetpack trees3_25
+  - first:
+      213: -697100934782888248
+    second: assetpack trees3_26
+  - first:
+      213: -7198715283596832214
+    second: assetpack trees3_27
+  - first:
+      213: 1684826024198378869
+    second: assetpack trees3_28
+  - first:
+      213: -3591598021113987706
+    second: assetpack trees3_29
+  - first:
+      213: -1151480513081566187
+    second: assetpack trees3_30
+  - first:
+      213: -636069412707141765
+    second: assetpack trees3_31
+  - first:
+      213: 2922065829225458712
+    second: assetpack trees3_32
+  - first:
+      213: 8376472324910636104
+    second: assetpack trees3_33
+  - first:
+      213: 8933733035285874492
+    second: assetpack trees3_34
+  - first:
+      213: -6731037917141852203
+    second: assetpack trees3_35
+  - first:
+      213: 5243042434351983695
+    second: assetpack trees3_36
+  - first:
+      213: -6244237115509433255
+    second: assetpack trees3_37
+  - first:
+      213: -6483495134264420464
+    second: assetpack trees3_38
+  - first:
+      213: 8709736462501612937
+    second: assetpack trees3_39
+  - first:
+      213: 69429094643819710
+    second: assetpack trees3_40
+  - first:
+      213: 7058993059780915222
+    second: assetpack trees3_41
+  - first:
+      213: -1096536871742261099
+    second: assetpack trees3_42
+  - first:
+      213: -3082305518804376088
+    second: assetpack trees3_43
+  - first:
+      213: 316672545710769815
+    second: assetpack trees3_44
+  - first:
+      213: 6852538495176944453
+    second: assetpack trees3_45
+  - first:
+      213: -8933289475067677664
+    second: assetpack trees3_46
+  - first:
+      213: 8960895281010789174
+    second: assetpack trees3_47
+  - first:
+      213: 9151871808122935067
+    second: assetpack trees3_48
+  - first:
+      213: -4925610173052935480
+    second: assetpack trees3_49
+  - first:
+      213: 2477085264039194910
+    second: assetpack trees3_50
+  - first:
+      213: -102833113096048728
+    second: assetpack trees3_51
+  - first:
+      213: 1253611723173863449
+    second: assetpack trees3_52
+  - first:
+      213: -3062993803666260551
+    second: assetpack trees3_53
+  - first:
+      213: 2915653544939474539
+    second: assetpack trees3_54
+  - first:
+      213: -1150995766932690559
+    second: assetpack trees3_55
+  - first:
+      213: 8822859458761467823
+    second: assetpack trees3_56
+  - first:
+      213: 6849318393071659146
+    second: assetpack trees3_57
+  - first:
+      213: -4564573933037219876
+    second: assetpack trees3_58
+  - first:
+      213: 4918216247441284084
+    second: assetpack trees3_59
+  - first:
+      213: -6250390115310557628
+    second: assetpack trees3_60
+  - first:
+      213: 2991600113072750004
+    second: assetpack trees3_61
+  - first:
+      213: 5742520380012085813
+    second: assetpack trees3_62
+  - first:
+      213: 4308967491629452821
+    second: assetpack trees3_63
+  - first:
+      213: -8599492988032694889
+    second: assetpack trees3_64
+  - first:
+      213: 3702914715175139993
+    second: assetpack trees3_65
+  - first:
+      213: 1808668365485246429
+    second: assetpack trees3_66
+  - first:
+      213: -8274183586897981593
+    second: assetpack trees3_67
+  - first:
+      213: 8255088381127424980
+    second: assetpack trees3_68
+  - first:
+      213: -915341494456473391
+    second: assetpack trees3_69
+  - first:
+      213: -4568836538559495102
+    second: assetpack trees3_70
+  - first:
+      213: 3384806548389885299
+    second: assetpack trees3_71
+  - first:
+      213: 9039607337640705012
+    second: assetpack trees3_72
+  - first:
+      213: 7482331455115247491
+    second: assetpack trees3_73
+  - first:
+      213: 8096521364849038426
+    second: assetpack trees3_74
+  - first:
+      213: 2601043199958265154
+    second: assetpack trees3_75
+  - first:
+      213: -3429540523258534665
+    second: assetpack trees3_76
+  - first:
+      213: -2104044952387073151
+    second: assetpack trees3_77
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 180
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: assetpack trees3_0
+      rect:
+        serializedVersion: 2
+        x: 892
+        y: 977
+        width: 861
+        height: 1090
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34e593e758e909da0800000000000000
+      internalID: -5940073612316156349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: assetpack trees3_5
+      rect:
+        serializedVersion: 2
+        x: 1759
+        y: 939
+        width: 819
+        height: 1090
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 553c0a145016afce0800000000000000
+      internalID: -1370676461377109163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: assetpack trees3_12
+      rect:
+        serializedVersion: 2
+        x: 2721
+        y: 576
+        width: 527
+        height: 998
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7eb2597db97f5680800000000000000
+      internalID: -8764152495148450179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: assetpack trees3_13
+      rect:
+        serializedVersion: 2
+        x: 3392
+        y: 551
+        width: 780
+        height: 788
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 522f29e596f781d50800000000000000
+      internalID: 6708251735503335973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: e473ea21297637a4f956ef9e5286260a
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      assetpack trees3_0: -5940073612316156349
+      assetpack trees3_1: 3844614436328797363
+      assetpack trees3_10: 3794153164902317302
+      assetpack trees3_11: -6390066693212226509
+      assetpack trees3_12: -8764152495148450179
+      assetpack trees3_13: 6708251735503335973
+      assetpack trees3_2: 5297275593032467981
+      assetpack trees3_3: 8178406257370455580
+      assetpack trees3_4: -5367699012920987666
+      assetpack trees3_5: -1370676461377109163
+      assetpack trees3_6: 1851878380100420368
+      assetpack trees3_7: 3991511807337006704
+      assetpack trees3_8: 3620390180130860617
+      assetpack trees3_9: -4654543880662592535
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

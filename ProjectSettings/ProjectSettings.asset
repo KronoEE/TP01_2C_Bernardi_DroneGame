@@ -731,8 +731,8 @@ PlayerSettings:
   editorAssembliesCompatibilityLevel: 1
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: TP07Integrador_C1_Bernardi_FinalDay
-  metroPackageVersion: 
+  metroPackageName: TP07IntegradorC1BernardiFinalDay
+  metroPackageVersion: 1.0.0.0
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
@@ -740,7 +740,7 @@ PlayerSettings:
   metroCertificateNotAfter: 0000000000000000
   metroApplicationDescription: TP07Integrador_C1_Bernardi_FinalDay
   wsaImages: {}
-  metroTileShortName: 
+  metroTileShortName: TP07Integrador_C1_Bernardi_FinalDay
   metroTileShowName: 0
   metroMediumTileShowName: 0
   metroLargeTileShowName: 0

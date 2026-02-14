@@ -1,0 +1,333 @@
+fileFormatVersion: 2
+guid: 524abbcecb984a04885222b04eb1e787
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6063830267114739592
+    second: assetpack trees2_0
+  - first:
+      213: 879057428055910051
+    second: assetpack trees2_1
+  - first:
+      213: -2222383898470389415
+    second: assetpack trees2_2
+  - first:
+      213: -9129311321248535085
+    second: assetpack trees2_3
+  - first:
+      213: 8809164864861033807
+    second: assetpack trees2_4
+  - first:
+      213: 8200629309725884955
+    second: assetpack trees2_5
+  - first:
+      213: -2875701501885586013
+    second: assetpack trees2_6
+  - first:
+      213: 6486638417671562040
+    second: assetpack trees2_7
+  - first:
+      213: 2217220115596100376
+    second: assetpack trees2_8
+  - first:
+      213: -4785785228363153006
+    second: assetpack trees2_9
+  - first:
+      213: -490960742181917884
+    second: assetpack trees2_10
+  - first:
+      213: -4186825903742527400
+    second: assetpack trees2_11
+  - first:
+      213: 6968897077538148900
+    second: assetpack trees2_12
+  - first:
+      213: -8782860990978224258
+    second: assetpack trees2_13
+  - first:
+      213: 219331665169362573
+    second: assetpack trees2_14
+  - first:
+      213: -7943628523378764706
+    second: assetpack trees2_15
+  - first:
+      213: -113089726737635584
+    second: assetpack trees2_16
+  - first:
+      213: 5239027481143573201
+    second: assetpack trees2_17
+  - first:
+      213: 4629185798124998885
+    second: assetpack trees2_18
+  - first:
+      213: 3393720246220710521
+    second: assetpack trees2_19
+  - first:
+      213: 3546795939746298727
+    second: assetpack trees2_20
+  - first:
+      213: 6116361883783175334
+    second: assetpack trees2_21
+  - first:
+      213: 4057216877345598343
+    second: assetpack trees2_22
+  - first:
+      213: -6597383957972013569
+    second: assetpack trees2_23
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 180
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: assetpack trees2_4
+      rect:
+        serializedVersion: 2
+        x: 892
+        y: 544
+        width: 860
+        height: 1487
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 7, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f45d4e985c0704a70800000000000000
+      internalID: 8809164864861033807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: assetpack trees2_18
+      rect:
+        serializedVersion: 2
+        x: 1752
+        y: 544
+        width: 825
+        height: 1474
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e01688f4fb2e3040800000000000000
+      internalID: 4629185798124998885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: assetpack trees2_22
+      rect:
+        serializedVersion: 2
+        x: 2722
+        y: 576
+        width: 526
+        height: 997
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78b67eef0412e4830800000000000000
+      internalID: 4057216877345598343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: assetpack trees2_23
+      rect:
+        serializedVersion: 2
+        x: 3392
+        y: 550
+        width: 781
+        height: 789
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ffda732ae326174a0800000000000000
+      internalID: -6597383957972013569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 615142f96f02f4142ae63c63220f6bc8
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      assetpack trees2_0: 6063830267114739592
+      assetpack trees2_1: 879057428055910051
+      assetpack trees2_10: -490960742181917884
+      assetpack trees2_11: -4186825903742527400
+      assetpack trees2_12: 6968897077538148900
+      assetpack trees2_13: -8782860990978224258
+      assetpack trees2_14: 219331665169362573
+      assetpack trees2_15: -7943628523378764706
+      assetpack trees2_16: -113089726737635584
+      assetpack trees2_17: 5239027481143573201
+      assetpack trees2_18: 4629185798124998885
+      assetpack trees2_19: 3393720246220710521
+      assetpack trees2_2: -2222383898470389415
+      assetpack trees2_20: 3546795939746298727
+      assetpack trees2_21: 6116361883783175334
+      assetpack trees2_22: 4057216877345598343
+      assetpack trees2_23: -6597383957972013569
+      assetpack trees2_3: -9129311321248535085
+      assetpack trees2_4: 8809164864861033807
+      assetpack trees2_5: 8200629309725884955
+      assetpack trees2_6: -2875701501885586013
+      assetpack trees2_7: 6486638417671562040
+      assetpack trees2_8: 2217220115596100376
+      assetpack trees2_9: -4785785228363153006
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

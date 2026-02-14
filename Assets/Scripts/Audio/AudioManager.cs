@@ -9,14 +9,11 @@ public class AudioManager : MonoBehaviour
 
     [Header("-------- Audio Clip --------")]
     public AudioClip backgroundMusic;
-    public AudioClip coinsSfx;
     public AudioClip jumpSfx;
     public AudioClip WinSfx;
     public AudioClip LooseSfx;
     public AudioClip ShootSfx;
-    public AudioClip portalSfx;
-    public AudioClip SwordAttackSfx;
-    public AudioClip MonsterAttackSfx;
+    public AudioClip ZombieAttackSfx;
     [Header("-------- Audio Clip UI --------")]
     public AudioClip ButtonUI;
     public AudioClip HoverUi;

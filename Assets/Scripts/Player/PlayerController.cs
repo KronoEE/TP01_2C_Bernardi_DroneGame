@@ -1,192 +1,278 @@
-using System.Collections;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    //[SerializeField] private Healthbar healthbar;
-    [SerializeField] private PlayerDataSO data;
-    [SerializeField] private Animator animator;
-    //[SerializeField] private GameObject deathPanel;
+    [SerializeField] PlayerDataSO data;
+    [SerializeField] Animator animator;
 
     AudioManager audioManager;
+    Rigidbody2D rb;
 
-    private Rigidbody2D rb;
-    private int jumpCount;
-    private int maxJumps = 1;
-    private bool isGrounded;
-    private bool takingDamage;
-    private bool m_FacingRight = true;
-    private float currjumpForce = 10f;
-    private bool bisAttacking;
-    private int health;
-
+    bool facingRight = true;
+    bool isGrounded;
+    bool bisAttacking;
+    bool takingDamage;
     public bool attackCondition;
     public bool isDead;
-    private void Awake()
+
+    private int health;
+
+    enum State
     {
-        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        PistolIdle, // PistolIdle
+        PistolRun, // PistolAimingRunning
+        PistolJump, // PistolJumping
+        PistolFall, // PistolFalling
+        PistolShoot, //PistolShoot
+        PistolHit, //PistolHit
+        PistolDead, // PistolDead
+        PistolCrouchIdle, // PistolCrouchAiming
+        PistolCrouchShoot // PistolCrouchShooting
     }
-    private void Start()
+
+    State state;
+
+    void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        bool condition = !bisAttacking && isGrounded;
+        attackCondition = condition;
+    }
+
+    void Start()
     {
         health = data.maxHealth;
-        currjumpForce = data.maxJumpForce;
-        //healthbar.UpdateHealthBar(data.maxHealth, health);
-        rb = GetComponent<Rigidbody2D>();
+        ChangeState(State.PistolIdle);
     }
-    private void Update()
+
+    void Update()
     {
-        if (!isDead)
-        {
-            if (!bisAttacking)
-            {
-                // if is not dead and attacking, calls Movement() method and cast a raycast to check if grounded
-                Movement();
-                RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, data.lengthRayCast, data.layerMask);
-                isGrounded = hit.collider != null;
-
-                if (isGrounded)
-                {
-                    // If is grounded reset jump count
-                    jumpCount = 0;
-                }
-                if (Input.GetKeyDown(data.jumpKey) && !takingDamage && jumpCount < maxJumps)
-                {
-                    /* If jump key is pressed and player is not taking damage and jump count is less than max jumps, jumps.
-                     Also, play a sound and add an integer to jumpcount*/
-
-                    audioManager.PlaySFX(audioManager.jumpSfx);
-                    rb.velocity = new Vector2(rb.velocity.x, 0f);
-                    rb.AddForce(new Vector2(0f, currjumpForce), ForceMode2D.Impulse);
-                    jumpCount++;
-                }
-            }
-            // Setting Attack condition
-            bool condition = !bisAttacking && isGrounded;
-            attackCondition = condition;
-            // Atacking and playing a sound
-            if (Input.GetKeyDown(data.attackKey) && attackCondition)
-            {
-                audioManager.PlaySFX(audioManager.ShootSfx);
-                Attacking();
-            }
-        }
-        animator.SetBool("isGrounded", isGrounded);
-        animator.SetBool("takingDamage", takingDamage);
-        animator.SetBool("attacking", bisAttacking);
+        CheckGround();
+        StateMachine();
     }
-    public void Movement()
+
+    // ================= FSM =================
+
+    void StateMachine()
     {
-        // Getting horizontal input and setting velocity
-        float velocityX = Input.GetAxis("Horizontal") * Time.deltaTime * data.velocity;
-        animator.SetFloat("Movement", velocityX * data.velocity);
-
-        // Flip the player according to the movement direction
-        if (velocityX < 0 && m_FacingRight)
+        switch (state)
         {
-            Flip();
+            case State.PistolIdle:
+                Idle();
+                break;
+            case State.PistolRun:
+                Movement();  
+                break;
+            case State.PistolJump:
+                Jumping();
+                break;
+            case State.PistolFall:
+                Falling();
+                break;
+            case State.PistolShoot:
+                PistolShooting();
+                break;
+            case State.PistolHit:
+                PistolHit();
+                break;
+            case State.PistolDead:
+                Dead();
+                break;
         }
-        if (velocityX > 0 && !m_FacingRight)
-        {
-            Flip();
-        }
-
-        // If not taking damage, move the player
-        Vector3 position = transform.position;
-        if (!takingDamage)
-            transform.position = new Vector3(velocityX + position.x, position.y, position.z);
     }
+
+    void ChangeState(State newState)
+    {
+        if (state == newState) return;
+
+        state = newState;
+
+        switch (state)
+        {
+            case State.PistolIdle:
+                animator.Play("PistolIdle");
+                break;
+            case State.PistolRun:
+                animator.Play("PistolAimingRunning");
+                break;
+            case State.PistolJump:
+                animator.Play("PistolJumping");
+                break;
+            case State.PistolFall:
+                animator.Play("PistolFalling");
+                break;
+            case State.PistolShoot:
+                animator.Play("PistolShoot");
+                break;
+            case State.PistolHit:
+                animator.Play("PistolHit");
+                break;
+            case State.PistolDead:
+                animator.Play("PistolDead");
+                break;
+        }
+    }
+
     public void TakingDamage(Vector2 direction, int damageAmount)
     {
         if (!takingDamage)
         {
-            // If not already taking damage, apply damage and play corresponding effects
             takingDamage = true;
             health -= damageAmount;
             //healthbar.UpdateHealthBar(data.maxHealth, health);
             if (health <= 0)
             {
-                // If health is 0 or less, player dies
                 audioManager.Stop();
-                audioManager.PlaySFX(audioManager.LooseSfx);
+                //audioManager.PlaySFX(audioManager.LooseSfx);
                 //deathPanel.SetActive(true);
-                animator.SetBool("isDead", isDead);
+                ChangeState(State.PistolDead);
                 isDead = true;
                 Time.timeScale = 0;
             }
             if (!isDead)
             {
-                // Apply rebound force when taking damage
                 Vector2 rebound = new Vector2(transform.position.x - direction.x, 0.5f).normalized;
                 rb.AddForce(rebound * data.reboundForce, ForceMode2D.Impulse);
+                takingDamage = false;
             }
         }
     }
-    public void DeactiveDamage()
+    // ================= STATES =================
+
+    private void Idle()
     {
-        takingDamage = false;
-        rb.velocity = Vector2.zero;
-    }
-    public void Attacking()
-    {
-        bisAttacking = true;
+        float x = Input.GetAxisRaw("Horizontal");
+
+        if (x != 0)
+            ChangeState(State.PistolRun);  
+
+        if (Input.GetKeyDown(data.jumpKey) && isGrounded)
+            DoJump();
+
+        if (Input.GetKeyDown(data.attackKey) && isGrounded)
+            ChangeState(State.PistolShoot);
     }
 
-    public void DeactiveAttack()
+    private void Movement()
     {
-        bisAttacking = false;
-        animator.SetBool("attacking", bisAttacking = false);
+        float velocityX = Input.GetAxisRaw("Horizontal");
+
+        rb.velocity = new Vector2(velocityX * data.velocity, rb.velocity.y);
+
+        // Flip the player according to the movement direction
+        if (velocityX < 0 && facingRight)
+        {
+            Flip();
+        }
+        if (velocityX > 0 && !facingRight)
+        {
+            Flip();
+        }
+
+        if (velocityX == 0)
+            ChangeState(State.PistolIdle);  
+
+        if (Input.GetKeyDown(data.jumpKey) && isGrounded)
+            DoJump();
+
+        if (!isGrounded)
+            ChangeState(State.PistolFall);
     }
+
+    private void Jumping()
+    {
+        if (rb.velocity.y < 0)
+            ChangeState(State.PistolFall);
+    }
+    private void PistolHit()
+    {
+        if (takingDamage)
+        {
+            if (isGrounded)
+                ChangeState(State.PistolIdle);
+            else
+                ChangeState(State.PistolFall);
+            takingDamage = false;
+        }
+    }
+    private void Dead()
+    {
+        rb.velocity = Vector2.zero;
+        Time.timeScale = 0;
+    }
+    private void Falling()
+    {
+        if (isGrounded)
+            ChangeState(State.PistolIdle);
+    }
+
+    private void PistolShooting()
+    {
+        ChangeState(State.PistolShoot);
+        attackCondition = true;
+    }
+
+    // ================= ACTIONS =================
+
+    private void DoJump()
+    {
+        rb.velocity = new Vector2(rb.velocity.x, 0);
+        rb.AddForce(Vector2.up * data.maxJumpForce, ForceMode2D.Impulse);
+        ChangeState(State.PistolJump);
+    }
+
+    public void EndAttack() 
+    {
+        ChangeState(State.PistolIdle);
+    }
+
+    // ================= HELPERS =================
+
+    private void CheckGround()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, data.lengthRayCast, data.layerMask);
+        isGrounded = hit.collider != null;
+    }
+
     private void Flip()
     {
         // Switch the way the player is labelled as facing.
-        m_FacingRight = !m_FacingRight;
+        facingRight = !facingRight;
 
         transform.Rotate(0f, 180f, 0f);
     }
-
-    private void OnTriggerEnter2D(Collider2D other)
+    ///////////////////// Emotions /////////////////////
+    public void GetStressed()
     {
-        int coinLayer = LayerMask.NameToLayer("Coin");
-
-        if (other.gameObject.layer == coinLayer)
-        {
-            // If collides with a coin, destroy it, play sound and add to coin count
-            Destroy(other.gameObject);
-            audioManager.PlaySFX(audioManager.coinsSfx);
-        }
-
-        int DeathLayer = LayerMask.NameToLayer("DeathZone");
-        if (other.gameObject.layer == DeathLayer)
-        {
-            // If collides with death zone, player dies
-            audioManager.Stop();
-            audioManager.PlaySFX(audioManager.LooseSfx);
-            isDead = true;
-            Destroy(gameObject);
-            //deathPanel.SetActive(true);
-            Time.timeScale = 0;
-        }
+        Debug.Log("Player is stressed");
+        // Aplicar ui de stress
     }
-    public void StartJumpBoost()
+    public void GetFear()
     {
-        StartCoroutine(JumpBoost());
+        Debug.Log("Player is afraid");
+        // Aplicar ui de miedo, acortar vision y acortar distancia de bala
     }
-    public void Addhealth(int healthToAdd)
+    public void GetPain()
     {
-        // Add health and update health bar
-        health += healthToAdd;
-        //healthbar.UpdateHealthBar(data.maxHealth, health);
-        if (health > data.maxHealth)
-        {
-            health = data.maxHealth;
-            //healthbar.UpdateHealthBar(data.maxHealth, health);
-        }
+        Debug.Log("Player is in pain");
+        // Aplicar ui de dolor, pantalla roja y distorsionada, y reducir vida
     }
-    private IEnumerator JumpBoost()
+    public void GetTired()
     {
-        // Temporarily increase jump force
-        currjumpForce = currjumpForce + data.jumpBoostForce;
-        yield return new WaitForSeconds(data.jumpBoostTime);
-        currjumpForce = data.maxJumpForce;
+        Debug.Log("Player is tired");
+        // Aplicar ui de cansancio, reducir velocidad de movimiento y salto
+    }
+    public void GetCalm()
+    {
+        Debug.Log("Player is calm");
+        // Aplicar ui de calma, aumentar velocidad de movimiento y salto, y mejorar precisión de disparo
+    }
+
+    // ================= SOUNDS ================= 
+
+    public void PlayShootSfx()
+    {
+        audioManager.PlaySFX(audioManager.ShootSfx);
     }
 }
