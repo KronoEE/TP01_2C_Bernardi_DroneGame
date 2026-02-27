@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using UnityEngine;
 
@@ -21,7 +22,7 @@ public class EnemyController : MonoBehaviour
     private float movementX;
     private float hitStunDuration = 0.3f;
 
-
+    private CinemachineImpulseSource impulseSource;
     private AudioManager audioManager;
     private Rigidbody2D rb;
     private Animator animator;
@@ -38,19 +39,22 @@ public class EnemyController : MonoBehaviour
         isDead = false;
         isHitted = false;
 
+        impulseSource = GetComponent<CinemachineImpulseSource>();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
     }
 
     private void FixedUpdate()
     {
-        rb.velocity = new Vector2((movingRight ? 1 : -1) * data.speed, rb.velocity.y);
-        RaycastHit2D groundInfo = Physics2D.Raycast(groundCheck.position, Vector2.down, 1f, groundLayer);
+        if (isHitted || isDead) return;
 
-        if (groundInfo.collider == false)
+        float distanceToPlayer = player != null ? Vector2.Distance(transform.position, player.position) : Mathf.Infinity;
+
+        if (distanceToPlayer < data.detectionRadius)
         {
-            Flip();
+            return;
         }
+        Patrol();
     }
     private void Update()
     {
@@ -59,7 +63,7 @@ public class EnemyController : MonoBehaviour
             Movement();
         }
 
-        animator.SetBool("isMoving", isMoving && !isHitted);
+        animator.SetBool("isMoving", Mathf.Abs(rb.velocity.x) > 0.1f && !isHitted);
     }
 
     // ================= DAMAGE =================
@@ -67,7 +71,7 @@ public class EnemyController : MonoBehaviour
     public void TakingDamage(int damageAmount)
     {
         if (isDead) return;
-
+        CameraShakeManager.Instance.CameraShake(impulseSource);
         Debug.Log("Zombie recibió daño: " + damageAmount);
 
         health -= damageAmount;
@@ -89,7 +93,6 @@ public class EnemyController : MonoBehaviour
         rb.velocity = Vector2.zero;
 
         yield return new WaitForSeconds(hitStunDuration);
-
         isHitted = false;
     }
 
@@ -105,21 +108,19 @@ public class EnemyController : MonoBehaviour
         {
             Vector2 direction = (player.position - transform.position).normalized;
 
+            rb.velocity = new Vector2(direction.x * data.speed, rb.velocity.y);
+
             if (direction.x < 0)
                 transform.localScale = new Vector3(-1, 1, 1);
             else if (direction.x > 0)
                 transform.localScale = new Vector3(1, 1, 1);
 
-            movementX = direction.x;
             isMoving = true;
         }
         else
         {
-            movementX = 0;
             isMoving = false;
         }
-
-        rb.velocity = new Vector2(movementX * data.speed, rb.velocity.y);
     }
 
     // ================= ATTACK =================
@@ -136,24 +137,19 @@ public class EnemyController : MonoBehaviour
         {
             float distance = Vector2.Distance(transform.position, collision.transform.position);
             bool isInRange = distance <= data.attackRange;
-
             if (isInRange)
             {
                 FacePlayer(collision.transform);
-
                 isAttacking = true;
                 animator.SetBool("isInRange", isInRange);
                 animator.SetBool("isAttacking", isAttacking);
-
                 audioManager.PlaySFX(audioManager.ZombieAttackSfx);
 
                 PlayerController playerScript = collision.gameObject.GetComponent<PlayerController>();
 
                 Vector2 directionDamage = new Vector2(transform.position.x, 0);
                 playerScript.TakingDamage(directionDamage, data.damageAmount);
-
                 playerAlive = !playerScript.isDead;
-
                 if (!playerAlive)
                 {
                     isMoving = false;
@@ -167,11 +163,34 @@ public class EnemyController : MonoBehaviour
         if (player == null) return;
 
         if (player.position.x < transform.position.x)
+        {
             transform.localScale = new Vector3(-1, 1, 1);
+        }
         else
+        {
             transform.localScale = new Vector3(1, 1, 1);
+        }
     }
+    private void Patrol()
+    {
+        rb.velocity = new Vector2((movingRight ? 1 : -1) * data.speed, rb.velocity.y);
+        isMoving = true;
+        RaycastHit2D groundInfo = Physics2D.Raycast(groundCheck.position, Vector2.down, 1f, groundLayer);
 
+        if (groundInfo.collider == false)
+        {
+            Flip();
+        }
+        // If the player is far enough, the enemy will patrol, without facing player, but if the player is close, it will face the player
+        if (player.position.x < transform.position.x)
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+        }
+        else
+        {
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
+    }
     private void Flip()
     {
         movingRight = !movingRight;
@@ -179,7 +198,6 @@ public class EnemyController : MonoBehaviour
         localScale.x *= -1;
         transform.localScale = localScale;
     }
-
     public void EndAttack()
     {
         isAttacking = false;
@@ -189,11 +207,12 @@ public class EnemyController : MonoBehaviour
     }
 
     // ================= DEATH =================
-
     private void Die()
     {
-        rb.velocity = Vector2.zero;
+        animator.SetBool("isAttacking", false);
+        animator.SetBool("isInRange", false);
         animator.SetBool("isDead", true);
+        rb.velocity = Vector2.zero;
         Destroy(gameObject, 0.5f);
     }
 }

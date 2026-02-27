@@ -19,6 +19,6 @@ MonoBehaviour:
   attackKey: 101
   reboundForce: 10
   lengthRayCast: 1
-  maxJumpForce: 6
+  maxJumpForce: 8
   velocity: 6
   maxHealth: 3

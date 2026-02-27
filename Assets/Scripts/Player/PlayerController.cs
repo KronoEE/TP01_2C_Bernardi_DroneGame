@@ -1,10 +1,17 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
-{                    
+{
     [SerializeField] private PlayerDataSO data;
     [SerializeField] private Animator animator;
     [SerializeField] private GameObject deathPanel;
+    [SerializeField] CameraFearZoom cameraFearZoom;
+
+    public event Action OnEmotionChanged;
 
     AudioManager audioManager;
     Rigidbody2D rb;
@@ -17,7 +24,19 @@ public class PlayerController : MonoBehaviour
     public bool isDead;
 
     private int health;
+    private float currentJumpForce;
+    private float currentSpeed;
+    private float fatigueSpeed = 3f;
 
+    public List<Emotion> emotions;
+    public enum EmotionType
+    {
+        Calm,
+        Stressed,
+        Fear,
+        Pain,
+        Tired
+    }
     enum State
     {
         PistolIdle, // PistolIdle
@@ -39,10 +58,20 @@ public class PlayerController : MonoBehaviour
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         bool condition = !bisAttacking && isGrounded;
         attackCondition = condition;
+        emotions = new List<Emotion>
+            {
+                new Emotion(EmotionType.Calm, false),
+                new Emotion(EmotionType.Stressed, false),
+                new Emotion(EmotionType.Fear, false),
+                new Emotion(EmotionType.Pain, false),
+                new Emotion(EmotionType.Tired, false)
+            };
     }
 
     void Start()
     {
+        currentJumpForce = data.maxJumpForce;
+        currentSpeed = data.velocity;
         health = data.maxHealth;
         ChangeState(State.PistolIdle);
     }
@@ -63,7 +92,7 @@ public class PlayerController : MonoBehaviour
                 Idle();
                 break;
             case State.PistolRun:
-                Movement();  
+                Movement();
                 break;
             case State.PistolJump:
                 Jumping();
@@ -146,7 +175,7 @@ public class PlayerController : MonoBehaviour
         float x = Input.GetAxisRaw("Horizontal");
 
         if (x != 0)
-            ChangeState(State.PistolRun);  
+            ChangeState(State.PistolRun);
 
         if (Input.GetKeyDown(data.jumpKey) && isGrounded)
             DoJump();
@@ -159,7 +188,7 @@ public class PlayerController : MonoBehaviour
     {
         float velocityX = Input.GetAxisRaw("Horizontal");
 
-        rb.velocity = new Vector2(velocityX * data.velocity, rb.velocity.y);
+        rb.velocity = new Vector2(velocityX * currentSpeed, rb.velocity.y);
 
         // Flip the player according to the movement direction
         if (velocityX < 0 && facingRight)
@@ -172,7 +201,7 @@ public class PlayerController : MonoBehaviour
         }
 
         if (velocityX == 0)
-            ChangeState(State.PistolIdle);  
+            ChangeState(State.PistolIdle);
 
         if (Input.GetKeyDown(data.jumpKey) && isGrounded)
             DoJump();
@@ -210,7 +239,6 @@ public class PlayerController : MonoBehaviour
 
     private void PistolShooting()
     {
-        ChangeState(State.PistolShoot);
         attackCondition = true;
     }
 
@@ -218,7 +246,7 @@ public class PlayerController : MonoBehaviour
 
     private void DoJump()
     {
-        if(isGrounded)
+        if (isGrounded)
         {
             rb.velocity = new Vector2(rb.velocity.x, 0);
             rb.AddForce(Vector2.up * data.maxJumpForce, ForceMode2D.Impulse);
@@ -226,7 +254,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void EndAttack() 
+    public void EndAttack()
     {
         ChangeState(State.PistolIdle);
     }
@@ -247,34 +275,65 @@ public class PlayerController : MonoBehaviour
         transform.Rotate(0f, 180f, 0f);
     }
     ///////////////////// Emotions /////////////////////
-    public void GetStressed()
+    public void UpdateEmotions()
     {
-        Debug.Log("Player is stressed");
-        // Aplicar ui de stress
-    }
-    public void GetFear()
-    {
-        Debug.Log("Player is afraid");
-        // Aplicar ui de miedo, acortar vision y acortar distancia de bala
-    }
-    public void GetPain()
-    {
-        Debug.Log("Player is in pain");
-        // Aplicar ui de dolor, pantalla roja y distorsionada, y reducir vida
-    }
-    public void GetTired()
-    {
-        Debug.Log("Player is tired");
-        // Aplicar ui de cansancio, reducir velocidad de movimiento y salto
+        OnEmotionChanged?.Invoke();
     }
     public void GetCalm()
     {
+        Emotion calm = emotions.First(x => x.EmotionType == PlayerController.EmotionType.Calm);
+        if (!calm.bIsActive)
+        {
+        calm.bIsActive = true;
         Debug.Log("Player is calm");
+        cameraFearZoom.SetFear(false);
+        currentSpeed = data.velocity;
+        currentJumpForce = data.maxJumpForce;
         // Aplicar ui de calma, aumentar velocidad de movimiento y salto, y mejorar precisión de disparo
+        }
     }
-
+    public void GetStressed()
+    {
+        Emotion stressed = emotions.First(x => x.EmotionType == PlayerController.EmotionType.Stressed);
+        if (!stressed.bIsActive)
+        {
+            stressed.bIsActive = true;
+            Debug.Log("Player is stressed");
+        }
+    }
+    public void GetFear()
+    {
+        Emotion fear = emotions.First(x => x.EmotionType == PlayerController.EmotionType.Fear);
+        if (!fear.bIsActive)
+        {
+        fear.bIsActive = true;
+        cameraFearZoom.SetFear(true);
+        Debug.Log("Player is afraid");
+        // Aplicar ui de miedo, acortar vision y acortar distancia de bala
+        } 
+    }
+    public void GetPain()
+    {
+        Emotion pain = emotions.First(x => x.EmotionType == PlayerController.EmotionType.Pain);
+        if (!pain.bIsActive)
+        {
+            pain.bIsActive = true;
+            Debug.Log("Player is in pain");
+            // Aplicar ui de dolor, pantalla roja y distorsionada, y reducir vida
+        }
+    }
+    public void GetTired()
+    {
+        Emotion tired = emotions.First(x => x.EmotionType == PlayerController.EmotionType.Tired);
+        if (!tired.bIsActive)
+        {
+            tired.bIsActive = true;
+            currentSpeed = fatigueSpeed;
+            Debug.Log("Player is tired");
+            // Aplicar ui de cansancio, reducir velocidad de movimiento y salto
+        }
+    }
     // ================= SOUNDS ================= 
-
     public void PlayShootSfx()
     {
         audioManager.PlaySFX(audioManager.ShootSfx);

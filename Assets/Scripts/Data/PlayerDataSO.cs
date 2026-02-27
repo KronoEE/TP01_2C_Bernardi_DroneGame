@@ -15,6 +15,6 @@ public class PlayerDataSO : ScriptableObject
     public int maxJumpForce = 5;
     [Header("---------- Player Settings ----------")]
     public float velocity = 6f;
-    public int maxHealth = 3;
+    public int maxHealth = 100;
 
 }

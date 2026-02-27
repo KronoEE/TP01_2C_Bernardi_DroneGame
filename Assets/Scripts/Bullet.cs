@@ -4,11 +4,10 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] private float speed = 20f;
     [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private int damage = 50;
+    [SerializeField] private int damage = 25;
     [SerializeField] private GameObject impactEffect;
 
-    private float lifeSpan = 3f;
-
+    private float lifeSpan = 2.5f;
     private void Start()
     {
         rb.velocity = transform.right * speed;
@@ -22,14 +21,9 @@ public class Bullet : MonoBehaviour
         {
             enemy.TakingDamage(damage);
 
-            GameObject impact = Instantiate(
-                impactEffect,
-                transform.position,
-                Quaternion.identity
-            );
-
+            GameObject impact = Instantiate(impactEffect, transform.position, Quaternion.identity);
             Destroy(impact, 0.5f);
+            Destroy(gameObject);
         }
-        Destroy(gameObject);
-    } 
+    }
 }
