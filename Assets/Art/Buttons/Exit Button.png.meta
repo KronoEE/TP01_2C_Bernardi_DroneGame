@@ -142,12 +142,12 @@ TextureImporter:
       name: Exit Button_0
       rect:
         serializedVersion: 2
-        x: 19
-        y: 48
-        width: 1003
-        height: 971
+        x: 43
+        y: 204
+        width: 943
+        height: 615
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -162,7 +162,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 4440f8e5a28e4a044a7db466ab6f2bd3
     internalID: 0
     vertices: []
     indices: 

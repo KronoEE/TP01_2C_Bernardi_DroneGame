@@ -162,7 +162,7 @@ TextureImporter:
         width: 4320
         height: 1542
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -174,115 +174,10 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: assetpack smog large_1
-      rect:
-        serializedVersion: 2
-        x: 904
-        y: 1522
-        width: 7
-        height: 9
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 419d4d8f717bd24e0800000000000000
-      internalID: -2004744945523173100
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: assetpack smog large_2
-      rect:
-        serializedVersion: 2
-        x: 906
-        y: 1531
-        width: 57
-        height: 153
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 77af3ce6e03a24840800000000000000
-      internalID: 5206903401576921719
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: assetpack smog large_3
-      rect:
-        serializedVersion: 2
-        x: 875
-        y: 1518
-        width: 7
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 07a9e7676dbc3bef0800000000000000
-      internalID: -93507045273200016
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: assetpack smog large_4
-      rect:
-        serializedVersion: 2
-        x: 913
-        y: 1521
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a14a593d13d1d9980800000000000000
-      internalID: -8530630019329448934
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: assetpack smog large_5
-      rect:
-        serializedVersion: 2
-        x: 918
-        y: 1519
-        width: 13
-        height: 9
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: df5ee4a84f1e13540800000000000000
-      internalID: 4986014702884546045
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: d1b20495b35f74a448ae6848dcf26eb4
     internalID: 0
     vertices: []
     indices: 

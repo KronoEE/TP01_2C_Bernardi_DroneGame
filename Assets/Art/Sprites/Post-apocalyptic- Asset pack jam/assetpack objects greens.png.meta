@@ -351,7 +351,7 @@ TextureImporter:
         width: 385
         height: 417
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -372,7 +372,7 @@ TextureImporter:
         width: 144
         height: 414
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -393,7 +393,7 @@ TextureImporter:
         width: 216
         height: 188
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -414,7 +414,7 @@ TextureImporter:
         width: 1245
         height: 1034
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -422,27 +422,6 @@ TextureImporter:
       bones: []
       spriteID: 8def5e1ca9e758a90800000000000000
       internalID: -7312299216822993192
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: assetpack objects greens_4
-      rect:
-        serializedVersion: 2
-        x: 2185
-        y: 1659
-        width: 10
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5beb3170a234c5dd0800000000000000
-      internalID: -2496046245683675467
       vertices: []
       indices: 
       edges: []
@@ -456,7 +435,7 @@ TextureImporter:
         width: 225
         height: 305
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -477,7 +456,7 @@ TextureImporter:
         width: 341
         height: 186
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -498,7 +477,7 @@ TextureImporter:
         width: 265
         height: 948
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -519,7 +498,7 @@ TextureImporter:
         width: 304
         height: 973
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -540,7 +519,7 @@ TextureImporter:
         width: 583
         height: 348
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -561,7 +540,7 @@ TextureImporter:
         width: 430
         height: 520
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -574,57 +553,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: assetpack objects greens_11
-      rect:
-        serializedVersion: 2
-        x: 3642
-        y: 1189
-        width: 12
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: fb1c69a6787ff9290800000000000000
-      internalID: -7881308661894168129
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: assetpack objects greens_12
-      rect:
-        serializedVersion: 2
-        x: 4060
-        y: 1145
-        width: 46
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7801475c70aa98ba0800000000000000
-      internalID: -6086146471060303737
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: assetpack objects greens_13
       rect:
         serializedVersion: 2
-        x: 3795
+        x: 3769
         y: 816
-        width: 363
+        width: 389
         height: 185
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -632,48 +569,6 @@ TextureImporter:
       bones: []
       spriteID: 6fbb8c12264145890800000000000000
       internalID: -7470323470194656266
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: assetpack objects greens_14
-      rect:
-        serializedVersion: 2
-        x: 4150
-        y: 922
-        width: 11
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 770ac758445049200800000000000000
-      internalID: 185779276484485239
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: assetpack objects greens_15
-      rect:
-        serializedVersion: 2
-        x: 4155
-        y: 911
-        width: 6
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2b3728575ce7578b0800000000000000
-      internalID: -5155074811910523982
       vertices: []
       indices: 
       edges: []
@@ -687,7 +582,7 @@ TextureImporter:
         width: 202
         height: 295
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -695,174 +590,6 @@ TextureImporter:
       bones: []
       spriteID: 7dd88cd07c360bce0800000000000000
       internalID: -1391502578276594217
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: assetpack objects greens_17
-      rect:
-        serializedVersion: 2
-        x: 3771
-        y: 851
-        width: 18
-        height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c9626642be79ebdd0800000000000000
-      internalID: -2468368509568670052
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: assetpack objects greens_18
-      rect:
-        serializedVersion: 2
-        x: 3778
-        y: 842
-        width: 11
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8ecc7e4d737965890800000000000000
-      internalID: -7469616665896432408
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: assetpack objects greens_19
-      rect:
-        serializedVersion: 2
-        x: 3786
-        y: 833
-        width: 19
-        height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7b4a5afae9bc22ca0800000000000000
-      internalID: -6043043867565644617
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: assetpack objects greens_20
-      rect:
-        serializedVersion: 2
-        x: 26
-        y: 744
-        width: 19
-        height: 42
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f0a4e23d0403bf500800000000000000
-      internalID: 430991244323080719
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: assetpack objects greens_21
-      rect:
-        serializedVersion: 2
-        x: 959
-        y: 744
-        width: 13
-        height: 21
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ef31a2adf96aa67e0800000000000000
-      internalID: -1771420297926667266
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: assetpack objects greens_22
-      rect:
-        serializedVersion: 2
-        x: 969
-        y: 729
-        width: 11
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 60dd23cdcbe472060800000000000000
-      internalID: 6928593124787936518
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: assetpack objects greens_23
-      rect:
-        serializedVersion: 2
-        x: 946
-        y: 705
-        width: 9
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c034c6b5a955070e0800000000000000
-      internalID: -2274223690374954228
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: assetpack objects greens_24
-      rect:
-        serializedVersion: 2
-        x: 113
-        y: 671
-        width: 10
-        height: 9
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 54317abfc224c8a10800000000000000
-      internalID: 1912976702693643077
       vertices: []
       indices: 
       edges: []
@@ -876,7 +603,7 @@ TextureImporter:
         width: 680
         height: 171
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -897,7 +624,7 @@ TextureImporter:
         width: 883
         height: 179
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -905,27 +632,6 @@ TextureImporter:
       bones: []
       spriteID: 2114697fe93398cc0800000000000000
       internalID: -3708376060311224046
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: assetpack objects greens_27
-      rect:
-        serializedVersion: 2
-        x: 1943
-        y: 567
-        width: 24
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e0e0c160446bd9580800000000000000
-      internalID: -8818692092045029874
       vertices: []
       indices: 
       edges: []
@@ -939,7 +645,7 @@ TextureImporter:
         width: 274
         height: 197
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -952,162 +658,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: assetpack objects greens_29
-      rect:
-        serializedVersion: 2
-        x: 1023
-        y: 525
-        width: 41
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: db1a8f38904b131d0800000000000000
-      internalID: -3372716692961975875
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: assetpack objects greens_30
-      rect:
-        serializedVersion: 2
-        x: 1943
-        y: 536
-        width: 19
-        height: 29
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e286a71be920d6df0800000000000000
-      internalID: -185489129046644690
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: assetpack objects greens_31
-      rect:
-        serializedVersion: 2
-        x: 1962
-        y: 540
-        width: 10
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 09da3857626d06c10800000000000000
-      internalID: 2044869691494870416
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: assetpack objects greens_32
-      rect:
-        serializedVersion: 2
-        x: 1943
-        y: 510
-        width: 23
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 77b1ad4a06630b6d0800000000000000
-      internalID: -2976819564981380233
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: assetpack objects greens_33
-      rect:
-        serializedVersion: 2
-        x: 1943
-        y: 502
-        width: 14
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f5c09417c8c9a9ad0800000000000000
-      internalID: -2694669300017853345
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: assetpack objects greens_34
-      rect:
-        serializedVersion: 2
-        x: 861
-        y: 475
-        width: 9
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 131a1ed3d1e1f7e10800000000000000
-      internalID: 2197508254121173297
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: assetpack objects greens_35
-      rect:
-        serializedVersion: 2
-        x: 1412
-        y: 402
-        width: 47
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8e0e19f6b5ab65fd0800000000000000
-      internalID: -2353488853377883928
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: assetpack objects greens_36
       rect:
         serializedVersion: 2
-        x: 816
-        y: 150
-        width: 230
+        x: 815
+        y: 149
+        width: 246
         height: 177
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1120,36 +679,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: assetpack objects greens_37
-      rect:
-        serializedVersion: 2
-        x: 947
-        y: 326
-        width: 7
-        height: 23
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b907556418f9f8ed0800000000000000
-      internalID: -2409531898040323941
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: assetpack objects greens_38
       rect:
         serializedVersion: 2
-        x: 302
+        x: 293
         y: 137
-        width: 171
+        width: 180
         height: 181
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1157,27 +695,6 @@ TextureImporter:
       bones: []
       spriteID: 0c010a9fcc9ba7020800000000000000
       internalID: 2340387246384877760
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: assetpack objects greens_39
-      rect:
-        serializedVersion: 2
-        x: 395
-        y: 289
-        width: 11
-        height: 21
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 374eb25c3fe774120800000000000000
-      internalID: 2398024912048219251
       vertices: []
       indices: 
       edges: []
@@ -1191,7 +708,7 @@ TextureImporter:
         width: 86
         height: 136
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1207,12 +724,12 @@ TextureImporter:
       name: assetpack objects greens_41
       rect:
         serializedVersion: 2
-        x: 1411
+        x: 1399
         y: 163
-        width: 152
+        width: 164
         height: 141
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1220,48 +737,6 @@ TextureImporter:
       bones: []
       spriteID: 4a829f4374ded9b70800000000000000
       internalID: 8907536528095914148
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: assetpack objects greens_42
-      rect:
-        serializedVersion: 2
-        x: 1710
-        y: 170
-        width: 346
-        height: 135
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 33d301971df4c3950800000000000000
-      internalID: 6430102129076092211
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: assetpack objects greens_43
-      rect:
-        serializedVersion: 2
-        x: 1041
-        y: 260
-        width: 7
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 92f085d72da50d7a0800000000000000
-      internalID: -6354479214127214807
       vertices: []
       indices: 
       edges: []
@@ -1275,7 +750,7 @@ TextureImporter:
         width: 237
         height: 132
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1283,90 +758,6 @@ TextureImporter:
       bones: []
       spriteID: 445a7eec88d14f030800000000000000
       internalID: 3527476881561986372
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: assetpack objects greens_45
-      rect:
-        serializedVersion: 2
-        x: 2363
-        y: 242
-        width: 30
-        height: 45
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4df7b6b437b0f82c0800000000000000
-      internalID: -4427307318867427372
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: assetpack objects greens_46
-      rect:
-        serializedVersion: 2
-        x: 2379
-        y: 212
-        width: 29
-        height: 60
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 93dec4648cf79f080800000000000000
-      internalID: -9153144269504189127
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: assetpack objects greens_47
-      rect:
-        serializedVersion: 2
-        x: 2389
-        y: 206
-        width: 37
-        height: 59
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 92befa8e6bcbbee60800000000000000
-      internalID: 7992689457472989993
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: assetpack objects greens_48
-      rect:
-        serializedVersion: 2
-        x: 3251
-        y: 255
-        width: 7
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 661367567088dc4b0800000000000000
-      internalID: -5418525211308445338
       vertices: []
       indices: 
       edges: []
@@ -1380,7 +771,7 @@ TextureImporter:
         width: 180
         height: 167
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1393,120 +784,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: assetpack objects greens_50
-      rect:
-        serializedVersion: 2
-        x: 734
-        y: 239
-        width: 6
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: befca31f829ff02e0800000000000000
-      internalID: -2157231742246006805
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: assetpack objects greens_51
-      rect:
-        serializedVersion: 2
-        x: 1010
-        y: 150
-        width: 49
-        height: 103
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5706c8fbb8e7a3b10800000000000000
-      internalID: 1962019726352474229
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: assetpack objects greens_52
-      rect:
-        serializedVersion: 2
-        x: 1395
-        y: 210
-        width: 25
-        height: 34
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: dccc7f8999d4ff3d0800000000000000
-      internalID: -3170730290553828147
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: assetpack objects greens_53
-      rect:
-        serializedVersion: 2
-        x: 2535
-        y: 193
-        width: 70
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d846b9da4dd7f3510800000000000000
-      internalID: 1531080750728438925
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: assetpack objects greens_54
-      rect:
-        serializedVersion: 2
-        x: 2589
-        y: 204
-        width: 88
-        height: 50
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6d2fd5ae5227f69f0800000000000000
-      internalID: -473033928679230762
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: assetpack objects greens_55
       rect:
         serializedVersion: 2
-        x: 3057
+        x: 3023
         y: 113
-        width: 398
+        width: 547
         height: 145
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1518,283 +804,10 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: assetpack objects greens_56
-      rect:
-        serializedVersion: 2
-        x: 3477
-        y: 234
-        width: 7
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b758bac1afa9e2410800000000000000
-      internalID: 1454270128700753275
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: assetpack objects greens_57
-      rect:
-        serializedVersion: 2
-        x: 3537
-        y: 169
-        width: 41
-        height: 74
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 56768830c746f0d20800000000000000
-      internalID: 3246924340155410277
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: assetpack objects greens_58
-      rect:
-        serializedVersion: 2
-        x: 727
-        y: 219
-        width: 18
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d1f734e72f1adecf0800000000000000
-      internalID: -221342743798776035
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: assetpack objects greens_59
-      rect:
-        serializedVersion: 2
-        x: 3415
-        y: 119
-        width: 110
-        height: 114
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6068349265466d130800000000000000
-      internalID: 3591168074096805382
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: assetpack objects greens_60
-      rect:
-        serializedVersion: 2
-        x: 471
-        y: 190
-        width: 8
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 94deacf6464f81f20800000000000000
-      internalID: 3393731031433145673
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: assetpack objects greens_61
-      rect:
-        serializedVersion: 2
-        x: 480
-        y: 199
-        width: 9
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d587d051740b036e0800000000000000
-      internalID: -1859792826761643939
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: assetpack objects greens_62
-      rect:
-        serializedVersion: 2
-        x: 1045
-        y: 177
-        width: 18
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1a186d1ea25e9a120800000000000000
-      internalID: 2425721846656041377
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: assetpack objects greens_63
-      rect:
-        serializedVersion: 2
-        x: 2035
-        y: 176
-        width: 24
-        height: 35
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 18d99091030ad7b40800000000000000
-      internalID: 5439680053372362113
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: assetpack objects greens_64
-      rect:
-        serializedVersion: 2
-        x: 289
-        y: 153
-        width: 37
-        height: 37
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1c1b036801231bef0800000000000000
-      internalID: -94239070645866047
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: assetpack objects greens_65
-      rect:
-        serializedVersion: 2
-        x: 3025
-        y: 119
-        width: 31
-        height: 54
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5b97f74b7aac44800800000000000000
-      internalID: 595823872356350389
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: assetpack objects greens_66
-      rect:
-        serializedVersion: 2
-        x: 3032
-        y: 171
-        width: 13
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: cc31fe83ec400bed0800000000000000
-      internalID: -2400413317623508020
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: assetpack objects greens_67
-      rect:
-        serializedVersion: 2
-        x: 3522
-        y: 140
-        width: 26
-        height: 38
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f84b603bf79f3b540800000000000000
-      internalID: 5022632336307958927
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: assetpack objects greens_68
-      rect:
-        serializedVersion: 2
-        x: 3016
-        y: 150
-        width: 15
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: bb1e5c82acc7e29c0800000000000000
-      internalID: -3950082615448051269
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 7737ea1ed83f4aa4a8b8565eee04b481
     internalID: 0
     vertices: []
     indices: 

@@ -6,7 +6,6 @@ public class PauseGame : MonoBehaviour
 {
     [SerializeField] GameObject pauseMenu;
     [SerializeField] GameObject settingsMenu;
-    [SerializeField] GameObject deathMenu;
     [SerializeField] Button pauseBtn;
     [SerializeField] Button resumeBtn;
     [SerializeField] Button settingsBtn;
@@ -63,7 +62,7 @@ public class PauseGame : MonoBehaviour
     }
     private void OnHomeClicked()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        SceneManager.LoadScene("MainMenu");
         Time.timeScale = 1;
     }
     private void OnSettingsBack()

@@ -142,12 +142,12 @@ TextureImporter:
       name: Pause Button_0
       rect:
         serializedVersion: 2
-        x: 3
-        y: 8
-        width: 1019
-        height: 1011
+        x: 88
+        y: 95
+        width: 851
+        height: 843
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -162,7 +162,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 8819b0b09c542534ab70c5e9e21a444f
     internalID: 0
     vertices: []
     indices: 

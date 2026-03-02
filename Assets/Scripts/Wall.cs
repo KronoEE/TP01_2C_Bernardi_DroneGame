@@ -53,6 +53,7 @@ public class Wall : MonoBehaviour
                 playerScript.emotions.First(x => x.EmotionType == PlayerController.EmotionType.Calm).bIsActive = false;
             }
             playerScript.UpdateEmotions();
+            Destroy(gameObject);
         }
     }
     private void SetPlayerEmotion()

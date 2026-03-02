@@ -1,11 +1,11 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private Healthbar healthbar;
     [SerializeField] private PlayerDataSO data;
     [SerializeField] private Animator animator;
     [SerializeField] private GameObject deathPanel;
@@ -23,10 +23,10 @@ public class PlayerController : MonoBehaviour
     public bool attackCondition;
     public bool isDead;
 
+    private bool isSprinting;
     private int health;
     private float currentJumpForce;
     private float currentSpeed;
-    private float fatigueSpeed = 3f;
 
     public List<Emotion> emotions;
     public enum EmotionType
@@ -70,9 +70,19 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        isDead = false;
+        takingDamage = false;
+
+        Time.timeScale = 1f;
+
+        rb.velocity = Vector2.zero;
+        rb.angularVelocity = 0f;
+        rb.simulated = true;
+
         currentJumpForce = data.maxJumpForce;
         currentSpeed = data.velocity;
         health = data.maxHealth;
+
         ChangeState(State.PistolIdle);
     }
 
@@ -150,11 +160,12 @@ public class PlayerController : MonoBehaviour
         {
             takingDamage = true;
             health -= damageAmount;
-            //healthbar.UpdateHealthBar(data.maxHealth, health);
+            healthbar.UpdateHealthBar(data.maxHealth, health);
+            
             if (health <= 0)
             {
                 audioManager.Stop();
-                //audioManager.PlaySFX(audioManager.LooseSfx);
+                audioManager.PlaySFX(audioManager.LooseSfx);
                 deathPanel.SetActive(true);
                 ChangeState(State.PistolDead);
                 isDead = true;
@@ -162,6 +173,7 @@ public class PlayerController : MonoBehaviour
             }
             if (!isDead)
             {
+                GetPain();
                 Vector2 rebound = new Vector2(transform.position.x - direction.x, 0.5f).normalized;
                 rb.AddForce(rebound * data.reboundForce, ForceMode2D.Impulse);
                 takingDamage = false;
@@ -173,6 +185,8 @@ public class PlayerController : MonoBehaviour
     private void Idle()
     {
         float x = Input.GetAxisRaw("Horizontal");
+
+        HandleSprint();
 
         if (x != 0)
             ChangeState(State.PistolRun);
@@ -189,6 +203,8 @@ public class PlayerController : MonoBehaviour
         float velocityX = Input.GetAxisRaw("Horizontal");
 
         rb.velocity = new Vector2(velocityX * currentSpeed, rb.velocity.y);
+
+        HandleSprint();
 
         // Flip the player according to the movement direction
         if (velocityX < 0 && facingRight)
@@ -261,6 +277,22 @@ public class PlayerController : MonoBehaviour
 
     // ================= HELPERS =================
 
+    private void HandleSprint()
+    {
+        if (Input.GetKey(data.sprintKey) && isGrounded)
+        {
+            if (!isSprinting)
+            {
+                isSprinting = true;
+                currentSpeed = data.runVelocity;
+            }
+        }
+        else if (isSprinting)
+        {
+            isSprinting = false;
+            currentSpeed = data.velocity;
+        }
+    }
     private void CheckGround()
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, data.lengthRayCast, data.layerMask);
@@ -319,6 +351,7 @@ public class PlayerController : MonoBehaviour
         {
             pain.bIsActive = true;
             Debug.Log("Player is in pain");
+            UpdateEmotions();
             // Aplicar ui de dolor, pantalla roja y distorsionada, y reducir vida
         }
     }
@@ -328,7 +361,7 @@ public class PlayerController : MonoBehaviour
         if (!tired.bIsActive)
         {
             tired.bIsActive = true;
-            currentSpeed = fatigueSpeed;
+            currentSpeed = data.fatigueSpeed;
             Debug.Log("Player is tired");
             // Aplicar ui de cansancio, reducir velocidad de movimiento y salto
         }

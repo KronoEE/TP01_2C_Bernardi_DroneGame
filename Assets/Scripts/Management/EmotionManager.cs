@@ -5,12 +5,12 @@ using UnityEngine;
 public class EmotionManager : MonoBehaviour
 {
     [SerializeField] private PlayerController player;
-    [SerializeField] bool bIsFatigued;
+    [SerializeField] bool bIsStressed;
     [SerializeField] bool bIsFearing;
     // Emotions
-    private bool isFatigued;
+    private bool isStressed;
     private bool isFeared;
-    private float fatiguePercentaje = 0;
+    private float StressPercentaje = 0;
     private float fearPercentaje = 0;
 
     private void Awake()
@@ -20,7 +20,7 @@ public class EmotionManager : MonoBehaviour
     }
     private void Start()
     {
-        fatiguePercentaje = Mathf.Clamp(fatiguePercentaje, 0, 100);
+        StressPercentaje = Mathf.Clamp(StressPercentaje, 0, 100);
         fearPercentaje = Mathf.Clamp(fearPercentaje, 0, 100);
         StartCoroutine(IncrementEmotions());
     }
@@ -50,16 +50,16 @@ public class EmotionManager : MonoBehaviour
     {
         while (true)
         {
-            if (bIsFatigued)
+            if (bIsStressed)
             {
-                if (fatiguePercentaje >= 100)
+                if (StressPercentaje >= 100)
                 {
-                    isFatigued = true;
+                    isStressed = true;
                     player.GetTired();
                 }
                 else
                 {
-                    fatiguePercentaje+=10;
+                    StressPercentaje+=10;
                 }
             }
             if (bIsFearing)
@@ -75,7 +75,7 @@ public class EmotionManager : MonoBehaviour
                 }
             }
             yield return new WaitForSeconds(0.5f);
-            if (isFeared && isFatigued)
+            if (isFeared && isStressed)
             {
                 player.emotions.First(x => x.EmotionType == PlayerController.EmotionType.Calm).bIsActive = false;
                 player.UpdateEmotions();
@@ -97,22 +97,22 @@ public class EmotionManager : MonoBehaviour
                 }
                 fearPercentaje -= 10;
             }
-            if (bIsFatigued)
+            if (bIsStressed)
             {
-                if (fatiguePercentaje == 50)
+                if (StressPercentaje == 50)
                 {
-                    isFatigued = false;
+                    isStressed = false;
                     player.emotions.First(x => x.EmotionType == PlayerController.EmotionType.Tired).bIsActive = false;
                 }
-                fatiguePercentaje -= 10;
+                StressPercentaje -= 10;
             }
             yield return new WaitForSeconds(0.2f);
-            if (!isFeared && !isFatigued)
+            if (!isFeared && !isStressed)
             {
                 player.GetCalm();
                 player.UpdateEmotions();
             }
-            if (fatiguePercentaje == 0 && fearPercentaje == 0)
+            if (StressPercentaje == 0 && fearPercentaje == 0)
             {
                 StopCoroutine(DecreaseEmotions());
                 break;
