@@ -90,6 +90,7 @@ public class PlayerController : MonoBehaviour
 
     private void UpDown()
     {
+
         if (Input.GetKey(spaceKey))
             upForce = upForceUp;
         else if (Input.GetKey(ctrlKey))
