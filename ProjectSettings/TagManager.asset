@@ -2,10 +2,8 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!78 &1
 TagManager:
-  serializedVersion: 2
-  tags:
-  - Audio
-  - Ground
+  serializedVersion: 3
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -14,20 +12,10 @@ TagManager:
   - Water
   - UI
   - 
+  - 
   - Player
-  - 
-  - Enemy
-  - Bullet
-  - 
-  - WinRadius
-  - SoundRadius
-  - Triggerable Wall
-  - 
-  - 
-  - 
-  - 
-  - 
-  - MiniMap
+  - Enemies
+  - Obstacles
   - 
   - 
   - 
@@ -38,32 +26,20 @@ TagManager:
   - 
   - 
   - 
-  - Ground
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - Floor
   m_SortingLayers:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Far Props
-    uniqueID: 2543402915
-    locked: 0
-  - name: Dark FOG
-    uniqueID: 3799020707
-    locked: 0
-  - name: Light FOG
-    uniqueID: 728976865
-    locked: 0
-  - name: FarGround
-    uniqueID: 536787737
-    locked: 0
-  - name: Player
-    uniqueID: 3273903483
-    locked: 0
-  - name: Near Props
-    uniqueID: 2687944897
-    locked: 0
-  - name: Enemies
-    uniqueID: 317641873
-    locked: 0
-  - name: NearGround
-    uniqueID: 1828649845
-    locked: 0
+  m_RenderingLayers:
+  - Default
