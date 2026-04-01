@@ -3,5 +3,5 @@ using UnityEngine;
 public interface IEnemyMoveable
 {
     Rigidbody rb { get; set; }
-    void Move(float velocity);
+    void Move(Vector3 velocity);
 }

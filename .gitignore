@@ -73,11 +73,3 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
-
-# Lighting data generado por Unity (archivos grandes, se regeneran con bake)
-**/LightingData.asset
-**/LightingData.asset.meta
-
-# Modelos FBX (pueden pesar mucho)
-**/Models/*.fbx
-**/Models/*.fbx.meta

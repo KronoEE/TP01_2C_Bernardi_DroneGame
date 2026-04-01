@@ -12,16 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 177cccf1d0aec744aac72c570aa07c0e, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: Assembly-CSharp::PlayerDataSO
-  upForce: 0
-  tiltAmountForward: 0
-  tiltVelocityForward: 0
-  tiltAmountSideways: 0
-  tiltAmountVelocity: 0
-  wantedYRot: 0
-  currentYRot: 0
-  rotationYVelocity: 0
-  movementForwardSpeed: 500
-  sideMovementAmount: 300
+  movementForwardSpeed: 200
+  sideMovementAmount: 100
   upForceUp: 450
   upForceDown: -200
   upForceHover: 98.1
