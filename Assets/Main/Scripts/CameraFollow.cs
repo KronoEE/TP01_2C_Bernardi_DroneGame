@@ -29,7 +29,8 @@ public class CameraFollow : MonoBehaviour
             ref velocityCameraFollow,
             smoothTime
         );
-        float droneYaw = drone.GetComponent<PlayerController>().currentYRot;
+
+        float droneYaw = drone.eulerAngles.y;
         transform.rotation = Quaternion.Euler(pitchAngle, droneYaw, 0f);
     }
 }

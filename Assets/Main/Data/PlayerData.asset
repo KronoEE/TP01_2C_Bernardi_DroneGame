@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 177cccf1d0aec744aac72c570aa07c0e, type: 3}
+  m_Name: PlayerData
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerDataSO
+  upForce: 0
+  tiltAmountForward: 0
+  tiltVelocityForward: 0
+  tiltAmountSideways: 0
+  tiltAmountVelocity: 0
+  wantedYRot: 0
+  currentYRot: 0
+  rotationYVelocity: 0
+  movementForwardSpeed: 500
+  sideMovementAmount: 300
+  upForceUp: 450
+  upForceDown: -200
+  upForceHover: 98.1
+  maxTiltForward: 20
+  maxTiltSideways: 20
+  tiltSmoothTime: 0.1
+  mouseSensitivity: 3
+  rotationSmoothTime: 0.25
+  currentHealth: 100
+  maxHealth: 100
+  spaceKey: 32
+  ctrlKey: 306

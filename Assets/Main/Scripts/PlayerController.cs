@@ -2,37 +2,15 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private PlayerDataSO data;
+
     [Header("Bars")]
-    [SerializeField] private Fillbar healthBar;
-    [SerializeField] private Fillbar energyBar;
-
-    [Header("Forces")]
-    [SerializeField] private float movementForwardSpeed = 500f;
-    [SerializeField] private float sideMovementAmount = 300f;
-    [SerializeField] private float upForceUp = 450f;
-    [SerializeField] private float upForceDown = -200f;
-    [SerializeField] private float upForceHover = 98.1f;
-
-    [Header("Inclination")]
-    [SerializeField] private float maxTiltForward = 20f;
-    [SerializeField] private float maxTiltSideways = 20f;
-    [SerializeField] private float tiltSmoothTime = 0.1f;
-
-    [Header("Mouse Rotation")]
-    [SerializeField] private float mouseSensitivity = 3f;
-    [SerializeField] private float rotationSmoothTime = 0.25f;
+    [SerializeField] Fillbar healthBar;
+    [SerializeField] Fillbar energyBar;
 
     [Header("Cameras")]
     [SerializeField] private GameObject firstPersonCamera;
     [SerializeField] private GameObject thirdPersonCamera;
-
-    [Header("Keys")]
-    [SerializeField] private KeyCode spaceKey = KeyCode.Space;
-    [SerializeField] private KeyCode ctrlKey = KeyCode.LeftControl;
-
-    // Health
-    private float currentHealth;
-    private float maxHealth = 100f;
 
     // Movement
     private float upForce;
@@ -43,7 +21,7 @@ public class PlayerController : MonoBehaviour
 
     // Rotation
     private float wantedYRot;
-    [HideInInspector] public float currentYRot;
+    private float currentYRot;
     private float rotationYVelocity;
 
     // Components
@@ -58,7 +36,7 @@ public class PlayerController : MonoBehaviour
     }
     private void Start()
     {
-        currentHealth = maxHealth;
+        data.currentHealth = data.maxHealth;
     }
     private void Update()
     {
@@ -87,55 +65,55 @@ public class PlayerController : MonoBehaviour
 
     private void UpDown()
     {
-        if (Input.GetKey(spaceKey))
-            upForce = upForceUp;
-        else if (Input.GetKey(ctrlKey))
-            upForce = upForceDown;
+        if (Input.GetKey(data.spaceKey))
+            upForce = data.upForceUp;
+        else if (Input.GetKey(data.ctrlKey))
+            upForce = data.upForceDown;
         else
-            upForce = upForceHover;
+            upForce = data.upForceHover;
     }
     private void ForwardBackMovement()
     {
         float axis = Input.GetAxis("Vertical");
-        rb.AddRelativeForce(Vector3.forward * axis * movementForwardSpeed);
+        rb.AddRelativeForce(Vector3.forward * axis * data.movementForwardSpeed);
         tiltAmountForward = Mathf.SmoothDamp(
             tiltAmountForward,
-            maxTiltForward * axis,
+            data.maxTiltForward * axis,
             ref tiltVelocityForward,
-            tiltSmoothTime
+            data.tiltSmoothTime
         );
     }
     private void StrafeMovement()
     {
         float axis = Input.GetAxis("Horizontal");
-        rb.AddRelativeForce(Vector3.right * axis * sideMovementAmount);
+        rb.AddRelativeForce(Vector3.right * axis * data.sideMovementAmount);
         tiltAmountSideways = Mathf.SmoothDamp(
             tiltAmountSideways,
-            -maxTiltSideways * axis,
+            -data.maxTiltSideways * axis, 
             ref tiltAmountVelocity,
-            tiltSmoothTime
+            data.tiltSmoothTime 
         );
     }
     private void Rotation()
     {
         float mouseX = Input.GetAxis("Mouse X");
-        wantedYRot += mouseX * mouseSensitivity;
+        wantedYRot += mouseX * data.mouseSensitivity;
         currentYRot = Mathf.SmoothDamp(
             currentYRot,
             wantedYRot,
             ref rotationYVelocity,
-            rotationSmoothTime
+            data.rotationSmoothTime
         );
     }
     public void TakingDamage(float damage)
     {
-        currentHealth -= damage;
-        healthBar.UpdateBars(maxHealth, currentHealth);
-        if (currentHealth <= 0) Die();
+        data.currentHealth -= damage;
+        healthBar.UpdateBars(data.maxHealth, data.currentHealth);
+        if (data.currentHealth <= 0) Die();
     }
     private void Die()
     {
         Debug.Log("Player has died.");
-        currentHealth = 0;
+        data.currentHealth = 0;
     }
 }
