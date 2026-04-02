@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class EnemyIdleState : EnemyState
 {
-    private Vector3 targetPos;
-    private Vector3 direction;
+    private Vector3 _targetPos;
+    private Vector3 _direction;
     public EnemyIdleState(Enemy enemy, EnemyStateMachine enemyStateMachine) : base(enemy, enemyStateMachine)
     {
     }
@@ -16,7 +16,7 @@ public class EnemyIdleState : EnemyState
     public override void EnterState()
     {
         base.EnterState();
-        targetPos = GetRandomPointInCircle();
+        _targetPos = GetRandomPointInCircle();
     }
 
     public override void ExitState()
@@ -28,11 +28,11 @@ public class EnemyIdleState : EnemyState
     {
         base.FrameUpdate();
 
-        direction = (targetPos - enemy.transform.position).normalized;
-        enemy.Move(direction * enemy.randomMovementSpeed);
-        if ((enemy.transform.position - targetPos).sqrMagnitude < 0.01f)
+        _direction = (_targetPos - enemy.transform.position).normalized;
+        enemy.Move(_direction * enemy.randomMovementSpeed);
+        if ((enemy.transform.position - _targetPos).sqrMagnitude < 0.01f)
         {
-            targetPos = GetRandomPointInCircle();
+            _targetPos = GetRandomPointInCircle();
         }
     }
 
