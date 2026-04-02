@@ -3,13 +3,13 @@ using UnityEngine;
 public class Obstacles : MonoBehaviour
 {
     private float damageAmount = 20f;
-    private void OnTriggerEnter(Collider other)
+
+    private void OnCollisionEnter(Collision collision)
     {
         int playerLayer = LayerMask.NameToLayer("Player");
-        if (other.gameObject.layer == playerLayer)
+        if (collision.gameObject.layer == playerLayer)
         {
-            other.gameObject.GetComponent<PlayerController>().TakingDamage(damageAmount);
+            collision.gameObject.GetComponent<PlayerController>().TakingDamage(damageAmount);
         }
-
     }
 }
