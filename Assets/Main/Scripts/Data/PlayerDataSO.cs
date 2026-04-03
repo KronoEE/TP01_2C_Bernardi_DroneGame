@@ -19,10 +19,6 @@ public class PlayerDataSO : ScriptableObject
     public float mouseSensitivity = 3f;
     public float rotationSmoothTime = 0.25f;
 
-    [Header("Player Attributes")]
-    public float currentHealth;
-    public float maxHealth = 100f;
-
     [Header("Keys")]
     public KeyCode spaceKey = KeyCode.Space;
     public KeyCode ctrlKey = KeyCode.LeftControl;
