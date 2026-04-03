@@ -14,6 +14,7 @@ namespace FSM
         public override void OnEnter()
         {
             Agent.isStopped = true;
+            Agent.speed = 5f;
             base.OnEnter();
             Animator.Play("Attack");
         }

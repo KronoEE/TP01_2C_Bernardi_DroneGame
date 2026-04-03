@@ -16,7 +16,8 @@ namespace FSM
             base.OnEnter();
             Agent.enabled = true;
             Agent.isStopped = false;
-            Animator.Play("Walk");
+            Agent.speed = 5f;
+            Animator.Play("Run");
         }
 
         public override void OnLogic()
@@ -24,13 +25,16 @@ namespace FSM
             base.OnLogic();
             if (!RequestedExit)
             {
-                // you can add a more complex movement prediction algorithm like what 
-                // we did in AI Series 44: https://youtu.be/1Jkg8cKLsC0
                 Agent.SetDestination(Target.position);
+
+                // Si llegó al stopping distance, que quede mirando al jugador
+                if (Agent.remainingDistance <= Agent.stoppingDistance)
+                {
+                    Enemy.transform.LookAt(Target);
+                }
             }
             else if (Agent.remainingDistance <= Agent.stoppingDistance)
             {
-                // In case that we were requested to exit, we will continue moving to the last known position prior to transitioning out to idle.
                 fsm.StateCanExit();
             }
         }

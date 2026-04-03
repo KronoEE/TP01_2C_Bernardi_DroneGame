@@ -12,6 +12,9 @@ namespace FSM
         [SerializeField]
         private PlayerController Player;
 
+        [Header("Patrol")]
+        [SerializeField] private Transform[] Waypoints;
+
         [Header("Attack Config")]
         [SerializeField]
         [Range(0.1f, 5f)]
@@ -47,27 +50,38 @@ namespace FSM
 
             // Add States
             EnemyFSM.AddState(EnemyState.Idle, new IdleState(false, this));
+            EnemyFSM.AddState(EnemyState.Patrol, new PatrolState(false, this, Waypoints));
             EnemyFSM.AddState(EnemyState.Chase, new ChaseState(true, this, Player.transform));
             EnemyFSM.AddState(EnemyState.Attack, new AttackState(true, this, OnAttack));
 
-            // Add Transitions
+            // Idle → Patrol
+            EnemyFSM.AddTransition(new Transition<EnemyState>(EnemyState.Idle, EnemyState.Patrol,
+                (transition) => Waypoints.Length > 0));
+
+            // Patrol transitions
+            EnemyFSM.AddTransition(new Transition<EnemyState>(EnemyState.Patrol, EnemyState.Chase,
+                (transition) => IsInChasingRange));
+            EnemyFSM.AddTriggerTransition(StateEvent.DetectPlayer,
+                new Transition<EnemyState>(EnemyState.Patrol, EnemyState.Chase));
+
+            // Chase transitions
             EnemyFSM.AddTriggerTransition(StateEvent.DetectPlayer, new Transition<EnemyState>(EnemyState.Idle, EnemyState.Chase));
-            EnemyFSM.AddTriggerTransition(StateEvent.LostPlayer, new Transition<EnemyState>(EnemyState.Chase, EnemyState.Idle));
+            EnemyFSM.AddTriggerTransition(StateEvent.LostPlayer, new Transition<EnemyState>(EnemyState.Chase, EnemyState.Patrol));
             EnemyFSM.AddTransition(new Transition<EnemyState>(EnemyState.Idle, EnemyState.Chase,
                 (transition) => IsInChasingRange
                                 && Vector3.Distance(Player.transform.position, transform.position) > Agent.stoppingDistance)
             );
 
-            EnemyFSM.AddTransition(new Transition<EnemyState>(EnemyState.Chase, EnemyState.Idle,
-                (transition) => !IsInChasingRange
-                                || IsInAttackRange)
-            );
-
-            // Attack Transitions
+            // Attack Transitions primero
             EnemyFSM.AddTransition(new Transition<EnemyState>(EnemyState.Chase, EnemyState.Attack, ShouldAttack, forceInstantly: true));
             EnemyFSM.AddTransition(new Transition<EnemyState>(EnemyState.Idle, EnemyState.Attack, ShouldAttack, forceInstantly: true));
             EnemyFSM.AddTransition(new Transition<EnemyState>(EnemyState.Attack, EnemyState.Chase, IsNotWithinIdleRange));
-            EnemyFSM.AddTransition(new Transition<EnemyState>(EnemyState.Attack, EnemyState.Idle, IsWithinIdleRange));
+            EnemyFSM.AddTransition(new Transition<EnemyState>(EnemyState.Attack, EnemyState.Patrol, IsWithinIdleRange));
+
+            // Chase→Idle después
+            EnemyFSM.AddTransition(new Transition<EnemyState>(EnemyState.Chase, EnemyState.Idle,
+                (transition) => !IsInChasingRange)
+            );
 
             EnemyFSM.Init();
         }
@@ -107,6 +121,7 @@ namespace FSM
 
         private void OnAttack(State<EnemyState, StateEvent> State)
         {
+            if (ProjectilePrefab == null) return;
             transform.LookAt(Player.transform.position);
             LastAttackTime = Time.time;
 
