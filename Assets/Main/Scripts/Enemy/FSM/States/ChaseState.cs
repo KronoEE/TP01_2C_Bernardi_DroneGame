@@ -10,7 +10,6 @@ namespace FSM
         {
             this.Target = Target;
         }
-
         public override void OnEnter()
         {
             base.OnEnter();
@@ -19,7 +18,6 @@ namespace FSM
             Agent.speed = 5f;
             Animator.Play("Run");
         }
-
         public override void OnLogic()
         {
             base.OnLogic();
@@ -27,7 +25,6 @@ namespace FSM
             {
                 Agent.SetDestination(Target.position);
 
-                // Si llegó al stopping distance, que quede mirando al jugador
                 if (Agent.remainingDistance <= Agent.stoppingDistance)
                 {
                     Enemy.transform.LookAt(Target);

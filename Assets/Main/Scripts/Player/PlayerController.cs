@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -11,6 +12,9 @@ public class PlayerController : MonoBehaviour
     [Header("Cameras")]
     [SerializeField] private GameObject firstPersonCamera;
     [SerializeField] private GameObject thirdPersonCamera;
+
+    [Header("References")]
+    [SerializeField] private HealthSystem healthSystem;
 
     // Movement
     private float upForce;
@@ -36,7 +40,16 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        healthSystem.onDie += Die;
+        healthSystem.onLifeChanged += OnLifeChanged;
     }
+    private void OnDestroy()
+    {
+        healthSystem.onDie -= Die;
+        healthSystem.onLifeChanged -= OnLifeChanged;    
+    }
+
     private void Start()
     {
         currentHealth = maxHealth;
@@ -108,15 +121,14 @@ public class PlayerController : MonoBehaviour
             data.rotationSmoothTime
         );
     }
-    public void TakingDamage(float damage)
-    {
-        currentHealth -= damage;
-        healthBar.UpdateBars(maxHealth, currentHealth);
-        if (currentHealth <= 0) Die();
-    }
     private void Die()
     {
         Debug.Log("Player has died.");
         currentHealth = 0;
+    }
+    private void OnLifeChanged(float currentHealth, float maxHealth)
+    {
+        if (healthBar != null)
+            healthBar.UpdateBars(maxHealth, currentHealth);
     }
 }

@@ -9,7 +9,9 @@ public class Obstacles : MonoBehaviour
         int playerLayer = LayerMask.NameToLayer("Player");
         if (collision.gameObject.layer == playerLayer)
         {
-            collision.gameObject.GetComponent<PlayerController>().TakingDamage(damageAmount);
+            HealthSystem healthSys = collision.gameObject.GetComponent<HealthSystem>();
+            if (healthSys != null)
+                healthSys.TakeDamage((int)damageAmount);
         }
     }
 }
