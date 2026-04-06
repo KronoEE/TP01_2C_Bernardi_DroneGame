@@ -9,8 +9,6 @@ public class RocketLauncher : MonoBehaviour
     [SerializeField] private KeyCode fireKey = KeyCode.Q;
 
     [Header("Trajectory")]
-    [SerializeField] private float gravity = -9.81f;
-    [SerializeField] private float launchAngle = 45f;
     [SerializeField] private int trajectoryResolution = 30;
     [SerializeField] private LayerMask hitLayer;
     [SerializeField] private float maxRange = 80f;
