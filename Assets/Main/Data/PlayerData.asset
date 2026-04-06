@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 177cccf1d0aec744aac72c570aa07c0e, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: Assembly-CSharp::PlayerDataSO
-  movementForwardSpeed: 100
-  sideMovementAmount: 50
-  upForceUp: 350
-  upForceDown: -100
-  upForceHover: 98.1
-  maxTiltForward: 20
-  maxTiltSideways: 20
-  tiltSmoothTime: 0.1
-  mouseSensitivity: 3
-  rotationSmoothTime: 0.25
+  movementForwardSpeed: 8
+  sideMovementAmount: 6
+  upForceUp: 15
+  upForceDown: -10
+  upForceHover: 9.81
+  maxTiltForward: 15
+  maxTiltSideways: 12
+  tiltSmoothTime: 0.3
+  mouseSensitivity: 2
+  rotationSmoothTime: 0.15
   spaceKey: 32
   ctrlKey: 306

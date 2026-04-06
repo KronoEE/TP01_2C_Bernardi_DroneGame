@@ -15,6 +15,15 @@ namespace FSM
         [Header("Health")]
         [SerializeField] private HealthSystem healthSystem;
 
+        [Header("Score")]
+        [SerializeField] private int scoreValue = 100;
+
+        // Debug Info
+        [Space]
+        [Header("Debug Info")]
+        [SerializeField] private bool IsInChasingRange;
+        [SerializeField] private float LastAttackTime;
+
         [Header("Attack Config")]
         [SerializeField]
         [Range(0.1f, 5f)]
@@ -26,13 +35,6 @@ namespace FSM
         private PlayerSensor FollowPlayerSensor;
         [SerializeField]
         private PlayerSensor RangeAttackPlayerSensor;
-
-        [Space]
-        [Header("Debug Info")]
-        [SerializeField]
-        private bool IsInChasingRange;
-        [SerializeField]
-        private float LastAttackTime;
 
         [Header("Range Attack")]
         [SerializeField] private Transform WandTip;
@@ -137,7 +139,7 @@ namespace FSM
         private void OnDie()
         {
             Debug.Log($"{gameObject.name} ha muerto.");
-            // animation play 
+            ScoreSystem.Instance?.AddScore(scoreValue);
             EnemyFSM.RequestStateChange(EnemyState.Die);
             gameObject.SetActive(false);
         }

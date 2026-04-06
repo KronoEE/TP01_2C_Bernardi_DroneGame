@@ -11,6 +11,9 @@ namespace FSM
         [SerializeField] private float wanderRadius = 20f;
         [SerializeField] private float waitDuration = 2f;
 
+        [Header("Score")]
+        [SerializeField] private int scorePenalty = -50;
+
         private StateMachine<CivilState> CivilFSM;
         private Animator Animator;
         private NavMeshAgent Agent;
@@ -31,6 +34,8 @@ namespace FSM
             CivilFSM.AddTransition(new Transition<CivilState>(CivilState.Idle, CivilState.Walk,
                 t => true));
 
+            healthSystem.onDie += OnDie;
+
             CivilFSM.Init();
         }
         private void Update()
@@ -43,5 +48,10 @@ namespace FSM
         }
         public NavMeshAgent GetAgent() => Agent;
         public Animator GetAnimator() => Animator;
+        private void OnDie()
+        {
+            ScoreSystem.Instance?.AddScore(scorePenalty);
+            gameObject.SetActive(false);
+        }
     }
 }

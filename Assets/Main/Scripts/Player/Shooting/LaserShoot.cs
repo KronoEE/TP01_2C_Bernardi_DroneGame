@@ -8,9 +8,11 @@ public class LaserShoot : MonoBehaviour
     [SerializeField] private float range = 50f;
     [SerializeField] private int damage = 35;
 
+    [Header("Score")]
+    [SerializeField] private ScoreSystem scoreSystem;
+
     [Header("Visual Feedback")]
     [SerializeField] private GameObject impactEffect;
-
     private void Update()
     {
         if (Input.GetButtonDown("Fire1"))
@@ -31,10 +33,15 @@ public class LaserShoot : MonoBehaviour
 
             health.TakeDamage(damage);
 
-            //if (hit.collider.CompareTag("Enemy"))
-                //scoreSystem?.AddScore(100);
-            //else if (hit.collider.CompareTag("Civil"))
-                //scoreSystem?.AddScore(-50);
+        int enemyLayer = LayerMask.NameToLayer("Enemy");
+        int civilLayer = LayerMask.NameToLayer("NPC");
+
+        if (hit.collider.gameObject.layer == enemyLayer)
+            scoreSystem?.AddScore(100);
+        else if
+            (hit.collider.gameObject.layer == civilLayer)
+                scoreSystem?.AddScore(-50);
+
             if (impactEffect != null)
             {
                 GameObject impact = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
