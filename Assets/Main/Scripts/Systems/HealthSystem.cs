@@ -26,13 +26,14 @@ public class HealthSystem : MonoBehaviour, IDamageable
     }
     public void TakeDamage(int damage)
     {
-        if (damage < 0 || isInvulnerable)
-        {
-            return;
-        }
+        if (damage < 0 || isInvulnerable) return;
+        if (currentHealth <= 0) return;
+
         currentHealth -= damage;
+
         if (currentHealth <= 0)
         {
+            currentHealth = 0;
             onDie?.Invoke();
         }
         else
@@ -40,5 +41,10 @@ public class HealthSystem : MonoBehaviour, IDamageable
             onLifeChanged?.Invoke(currentHealth, maxHealth);
         }
         Debug.Log($"{gameObject.name} took {damage} damage. Current health: {currentHealth}/{maxHealth}");
+    }
+    public void ResetHealth()
+    {
+        currentHealth = maxHealth;
+        onLifeChanged?.Invoke(currentHealth, maxHealth);
     }
 }

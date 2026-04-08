@@ -73,6 +73,7 @@ public class PoolManager : MonoBehaviour
     public FSM.Enemy GetEnemy() => enemyPool.Get();
     public FSM.Civil GetCivil() => civilPool.Get();
 
+    public int GetActiveCivilCount() => civilPool.ActiveCount();
     public void ReturnEnemyBullet(EnemyBullet obj) => enemyBulletPool.Return(obj);
     public void ReturnPlayerRocket(PlayerRocket obj) => playerRocketPool.Return(obj);
     public void ReturnEnemy(FSM.Enemy obj) => enemyPool.Return(obj);

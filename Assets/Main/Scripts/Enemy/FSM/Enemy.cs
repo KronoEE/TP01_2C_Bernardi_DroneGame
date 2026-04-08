@@ -8,10 +8,6 @@ namespace FSM
     [RequireComponent(typeof(Animator), typeof(NavMeshAgent))]
     public class Enemy : MonoBehaviour
     {
-        [Header("References")]
-        [SerializeField]
-        private PlayerController Player;
-
         [Header("Health")]
         [SerializeField] private HealthSystem healthSystem;
 
@@ -40,6 +36,7 @@ namespace FSM
         [SerializeField] private Transform WandTip;
         [SerializeField] private GameObject ProjectilePrefab;
 
+        public PlayerController Player { get; private set; }
         private StateMachine<EnemyState, StateEvent> EnemyFSM;
         private Animator Animator;
         private NavMeshAgent Agent;
@@ -48,45 +45,6 @@ namespace FSM
         {
             Agent = GetComponent<NavMeshAgent>();
             Animator = GetComponent<Animator>();
-            EnemyFSM = new();
-
-            // Add States
-            EnemyFSM.AddState(EnemyState.Idle, new IdleState(false, this));
-            EnemyFSM.AddState(EnemyState.Patrol, new PatrolState(false, this, wanderRadius: 20f, waitDuration: 2f));
-            EnemyFSM.AddState(EnemyState.Chase, new ChaseState(true, this, Player.transform));
-            EnemyFSM.AddState(EnemyState.Attack, new AttackState(true, this, OnAttack));
-            EnemyFSM.AddState(EnemyState.Die, new IdleState(false, this));
-
-            // Idle → Patrol
-            EnemyFSM.AddTransition(new Transition<EnemyState>(EnemyState.Idle, EnemyState.Patrol,
-                (transition) => true));
-
-            // Patrol transitions
-            EnemyFSM.AddTransition(new Transition<EnemyState>(EnemyState.Patrol, EnemyState.Chase,
-                (transition) => IsInChasingRange));
-            EnemyFSM.AddTriggerTransition(StateEvent.DetectPlayer,
-                new Transition<EnemyState>(EnemyState.Patrol, EnemyState.Chase));
-
-            // Chase transitions
-            EnemyFSM.AddTriggerTransition(StateEvent.DetectPlayer, new Transition<EnemyState>(EnemyState.Idle, EnemyState.Chase));
-            EnemyFSM.AddTriggerTransition(StateEvent.LostPlayer, new Transition<EnemyState>(EnemyState.Chase, EnemyState.Patrol));
-            EnemyFSM.AddTransition(new Transition<EnemyState>(EnemyState.Idle, EnemyState.Chase,
-                (transition) => IsInChasingRange
-                                && Vector3.Distance(Player.transform.position, transform.position) > Agent.stoppingDistance)
-            );
-
-            // Attack Transitions primero
-            EnemyFSM.AddTransition(new Transition<EnemyState>(EnemyState.Chase, EnemyState.Attack, ShouldAttack, forceInstantly: true));
-            EnemyFSM.AddTransition(new Transition<EnemyState>(EnemyState.Idle, EnemyState.Attack, ShouldAttack, forceInstantly: true));
-            EnemyFSM.AddTransition(new Transition<EnemyState>(EnemyState.Attack, EnemyState.Chase, IsNotWithinIdleRange));
-            EnemyFSM.AddTransition(new Transition<EnemyState>(EnemyState.Attack, EnemyState.Patrol, IsWithinIdleRange));
-
-            // Chase→Idle después
-            EnemyFSM.AddTransition(new Transition<EnemyState>(EnemyState.Chase, EnemyState.Idle,
-                (transition) => !IsInChasingRange)
-            );
-
-            EnemyFSM.Init();
         }
         private void Start()
         {
@@ -96,20 +54,78 @@ namespace FSM
             RangeAttackPlayerSensor.OnPlayerExit += RangeAttackPlayerSensor_OnPlayerExit;
 
             healthSystem.onDie += OnDie;
+
+            Player = PlayerController.Instance;
+
+            if (Player == null)
+            {
+                Debug.LogError($"{gameObject.name}: PlayerController.Instance es null");
+                return;
+            }
+
+            InitializeFSM();
+        }
+        public void InitializeFSM()
+        {
+            EnemyFSM = new();
+
+            // States
+            EnemyFSM.AddState(EnemyState.Idle, new IdleState(false, this));
+            EnemyFSM.AddState(EnemyState.Patrol, new PatrolState(false, this, 20f, 2f));
+            EnemyFSM.AddState(EnemyState.Chase, new ChaseState(true, this, Player.transform));
+            EnemyFSM.AddState(EnemyState.Attack, new AttackState(true, this, OnAttack, AttackCooldown));
+            EnemyFSM.AddState(EnemyState.Die, new IdleState(false, this));
+
+            // Transitions
+            EnemyFSM.AddTransition(new Transition<EnemyState>(EnemyState.Idle, EnemyState.Patrol, t => true));
+
+            EnemyFSM.AddTransition(new Transition<EnemyState>(EnemyState.Patrol, EnemyState.Chase, t => IsInChasingRange));
+            EnemyFSM.AddTriggerTransition(StateEvent.DetectPlayer,
+                new Transition<EnemyState>(EnemyState.Patrol, EnemyState.Chase));
+
+            EnemyFSM.AddTriggerTransition(StateEvent.DetectPlayer,
+                new Transition<EnemyState>(EnemyState.Idle, EnemyState.Chase));
+
+            EnemyFSM.AddTriggerTransition(StateEvent.LostPlayer,
+                new Transition<EnemyState>(EnemyState.Chase, EnemyState.Patrol));
+
+            EnemyFSM.AddTransition(new Transition<EnemyState>(EnemyState.Idle, EnemyState.Chase,
+                t => IsInChasingRange &&
+                Vector3.Distance(Player.transform.position, transform.position) > Agent.stoppingDistance));
+
+            EnemyFSM.AddTransition(new Transition<EnemyState>(EnemyState.Chase, EnemyState.Attack, ShouldAttack));
+            EnemyFSM.AddTransition(new Transition<EnemyState>(EnemyState.Idle, EnemyState.Attack, ShouldAttack));
+            EnemyFSM.AddTransition(new Transition<EnemyState>(EnemyState.Attack, EnemyState.Chase, IsNotWithinIdleRange));
+            EnemyFSM.AddTransition(new Transition<EnemyState>(EnemyState.Attack, EnemyState.Patrol, IsWithinIdleRange));
+
+            EnemyFSM.AddTransition(new Transition<EnemyState>(EnemyState.Chase, EnemyState.Idle,
+                t => !IsInChasingRange));
+
+            EnemyFSM.Init();
         }
         private void FollowPlayerSensor_OnPlayerExit(Vector3 LastKnownPosition)
         {
+            if (EnemyFSM == null) return;
+
             EnemyFSM.Trigger(StateEvent.LostPlayer);
             IsInChasingRange = false;
         }
         private void FollowPlayerSensor_OnPlayerEnter(Transform Player)
         {
+            if (EnemyFSM == null) return;
+
             EnemyFSM.Trigger(StateEvent.DetectPlayer);
             IsInChasingRange = true;
         }
-        private bool ShouldAttack(Transition<EnemyState> Transition) =>
-            LastAttackTime + AttackCooldown <= Time.time
-            && IsInAttackRange;
+        private bool ShouldAttack(Transition<EnemyState> Transition)
+        {
+            bool cooldownOk = LastAttackTime + AttackCooldown <= Time.time;
+            bool inRange = IsInAttackRange;
+
+            Debug.Log($"ShouldAttack → CooldownOK: {cooldownOk} | InRange: {inRange}");
+
+            return cooldownOk && inRange;
+        }
         private bool IsWithinIdleRange(Transition<EnemyState> Transition) =>
             Vector3.Distance(Player.transform.position, transform.position) <= Agent.stoppingDistance;
         private bool IsNotWithinIdleRange(Transition<EnemyState> Transition) =>
@@ -118,30 +134,44 @@ namespace FSM
         private void RangeAttackPlayerSensor_OnPlayerExit(Vector3 LastKnownPosition) => IsInAttackRange = false;
         private void OnAttack(State<EnemyState, StateEvent> State)
         {
-            if (ProjectilePrefab == null) return;
             LastAttackTime = Time.time;
 
-            Vector3 targetPosition = Player.transform.position + Vector3.up * 1f;
+            Vector3 targetPosition = Player.transform.position + Vector3.up * 0.5f;
             transform.LookAt(targetPosition);
 
-            GameObject obj = Instantiate(ProjectilePrefab, WandTip.position, Quaternion.identity);
+            Debug.Log($"WandTip: {WandTip}");
 
-            EnemyBullet bullet = obj.GetComponent<EnemyBullet>();
-            if (bullet != null)
-                bullet.Initialize(targetPosition);
+            EnemyBullet bullet = PoolManager.Instance.GetEnemyBullet();
 
-            obj.SetActive(true);
+            if (bullet == null) return;
+
+            bullet.transform.position = WandTip.position;
+            bullet.transform.rotation = Quaternion.identity;
+            bullet.Initialize(targetPosition);
         }
         private void Update()
         {
+            if (EnemyFSM == null) return;
             EnemyFSM.OnLogic();
+
+            Debug.Log($"Estado actual FSM: {EnemyFSM.ActiveStateName} | InAttackRange: {IsInAttackRange} | Cooldown OK: {LastAttackTime + AttackCooldown <= Time.time}");
+        }
+        private void OnEnable()
+        {
+            if (healthSystem != null)
+                healthSystem.ResetHealth();
+
+            IsInChasingRange = false;
+            LastAttackTime = 0f;
+
+            if (EnemyFSM != null)
+                EnemyFSM.RequestStateChange(EnemyState.Patrol);
         }
         private void OnDie()
         {
             Debug.Log($"{gameObject.name} ha muerto.");
             ScoreSystem.Instance?.AddScore(scoreValue);
-            EnemyFSM.RequestStateChange(EnemyState.Die);
-            gameObject.SetActive(false);
+            PoolManager.Instance?.ReturnEnemy(this);
         }
     }
 }

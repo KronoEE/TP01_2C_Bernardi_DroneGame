@@ -38,7 +38,7 @@ namespace FSM
                 {
                     isWaiting = true;
                     waitTimer = waitDuration;
-                    if (HasAnimation("Idle")) Animator.Play("Idle");
+                    if (HasAnimation("Idle_A")) Animator.Play("Idle_A");
                 }
 
                 waitTimer -= Time.deltaTime;
