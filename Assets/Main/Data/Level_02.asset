@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LevelDataSO
   levelName: Level02
   sceneName: Scene_02
-  enemiesToKill: 2
+  enemiesToKill: 20
+  autoAdvance: 0
