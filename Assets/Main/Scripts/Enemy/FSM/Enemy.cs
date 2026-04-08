@@ -169,8 +169,8 @@ namespace FSM
         }
         private void OnDie()
         {
-            Debug.Log($"{gameObject.name} ha muerto.");
             ScoreSystem.Instance?.AddScore(scoreValue);
+            LevelManager.Instance?.OnEnemyKilled();
             PoolManager.Instance?.ReturnEnemy(this);
         }
     }

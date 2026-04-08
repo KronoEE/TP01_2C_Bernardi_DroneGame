@@ -44,12 +44,12 @@ public class PlayerController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        healthSystem.onDie += Die;
+        healthSystem.onDie += OnDie;
         healthSystem.onLifeChanged += OnLifeChanged;
     }
     private void OnDestroy()
     {
-        healthSystem.onDie -= Die;
+        healthSystem.onDie -= OnDie;
         healthSystem.onLifeChanged -= OnLifeChanged;    
     }
 
@@ -124,10 +124,12 @@ public class PlayerController : MonoBehaviour
             data.rotationSmoothTime
         );
     }
-    private void Die()
+    private void OnDie()
     {
         Debug.Log("Player has died.");
         currentHealth = 0;
+        LevelManager.Instance?.GameOver();
+        gameObject.SetActive(false);
     }
     private void OnLifeChanged(float currentHealth, float maxHealth)
     {
