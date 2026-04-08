@@ -52,28 +52,33 @@ public class PauseGame : MonoBehaviour
     }
     private void ResumeGame()
     {
+        audioManager.PlayUI(audioManager.ButtonUI);
         pauseMenu.SetActive(false);
         Time.timeScale = 1;
         isPaused = false;
     }
     private void OnPauseClicked()
     {
+        audioManager.PlayUI(audioManager.ButtonUI);
         pauseMenu.SetActive(true);
         Time.timeScale = 0;
         isPaused = true;
     }
     private void OnSettingsClicked()
     {
+        audioManager.PlayUI(audioManager.ButtonUI);
         settingsMenu.SetActive(true);
         pauseMenu.SetActive(false);
     }
     private void OnHomeClicked()
     {
+        audioManager.PlayUI(audioManager.ButtonUI);
         SceneManager.LoadScene("MainMenu");
         Time.timeScale = 1;
     }
     private void OnSettingsBack()
     {
+        audioManager.PlayUI(audioManager.ButtonUI);
         settingsMenu.SetActive(false);
         pauseMenu.SetActive(true);
     }

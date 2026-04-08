@@ -40,11 +40,12 @@ namespace FSM
         private StateMachine<EnemyState, StateEvent> EnemyFSM;
         private Animator Animator;
         private NavMeshAgent Agent;
-
+        AudioManager audioManager;
         private void Awake()
         {
             Agent = GetComponent<NavMeshAgent>();
             Animator = GetComponent<Animator>();
+            audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         }
         private void Start()
         {
@@ -142,7 +143,7 @@ namespace FSM
             if (Player == null) return;
 
             LastAttackTime = Time.time;
-
+            audioManager.PlaySFX(audioManager.EnemyAttackSfx);
             Vector3 targetPosition = Player.transform.position + Vector3.up * 0.5f;
             transform.LookAt(targetPosition);
 
@@ -184,6 +185,7 @@ namespace FSM
         }
         private void OnDie()
         {
+            audioManager.PlaySFX(audioManager.EnemyDeathSfx);
             ScoreSystem.Instance?.AddScore(scoreValue);
             LevelManager.Instance?.OnEnemyKilled();
             PoolManager.Instance?.ReturnEnemy(this);

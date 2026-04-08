@@ -13,6 +13,11 @@ public class PlayerRocket : MonoBehaviour
     private float speed;
     private bool isInitialized;
     private bool hasExploded;
+    AudioManager audioManager;
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
     public void Initialize(Vector3[] points, float rocketSpeed)
     {
         trajectoryPoints = points;
@@ -59,6 +64,7 @@ public class PlayerRocket : MonoBehaviour
     {
         if (hasExploded) return;
         hasExploded = true;
+        audioManager.PlaySFX(audioManager.LauncherShootSfx);
 
         int enemyLayer = LayerMask.NameToLayer("Enemy");
         int civilLayer = LayerMask.NameToLayer("NPC");

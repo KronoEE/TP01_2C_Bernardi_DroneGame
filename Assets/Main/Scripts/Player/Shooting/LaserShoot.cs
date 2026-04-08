@@ -13,6 +13,13 @@ public class LaserShoot : MonoBehaviour
 
     [Header("Visual Feedback")]
     [SerializeField] private GameObject impactEffect;
+
+    AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
     private void Update()
     {
         if (Input.GetButtonDown("Fire1"))
@@ -22,6 +29,7 @@ public class LaserShoot : MonoBehaviour
     }
     private void Shoot()
     {
+        audioManager.PlaySFX(audioManager.LaserShootSfx);
         RaycastHit hit;
         bool hitted = Physics.Raycast(shootPoint.position, shootPoint.forward, out hit, range, hitLayer);
 

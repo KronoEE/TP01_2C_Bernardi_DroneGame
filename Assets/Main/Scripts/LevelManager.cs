@@ -17,9 +17,10 @@ public class LevelManager : MonoBehaviour
     private int enemiesKilled = 0;
     private bool levelCompleted = false;
     private LevelDataSO CurrentLevel => levels[currentLevelIndex];
-
+    AudioManager audioManager;
     private void Awake()
     {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -66,7 +67,7 @@ public class LevelManager : MonoBehaviour
     {
         if (levelCompleted) return;
         levelCompleted = true;
-
+        audioManager.PlaySFX(audioManager.WinSfx);
         if (CurrentLevel.autoAdvance)
         {
             LoadNextLevel();
@@ -125,6 +126,7 @@ public class LevelManager : MonoBehaviour
     }
     public void GameOver()
     {
+        audioManager.PlaySFX(audioManager.LooseSfx);
         Time.timeScale = 0f;
         if (gameOverPanel != null)
             gameOverPanel.SetActive(true);

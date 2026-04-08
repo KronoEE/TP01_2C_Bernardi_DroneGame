@@ -36,8 +36,11 @@ public class PlayerController : MonoBehaviour
     private float currentHealth;
     private float maxHealth = 100f;
 
+    AudioManager audioManager;
+
     private void Awake()
     {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         Instance = this;
         rb = GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Locked;
@@ -125,6 +128,7 @@ public class PlayerController : MonoBehaviour
     }
     private void OnDie()
     {
+        audioManager.PlaySFX(audioManager.PlayerDeathSfx);
         Debug.Log("Player has died.");
         currentHealth = 0;
         LevelManager.Instance?.GameOver();
