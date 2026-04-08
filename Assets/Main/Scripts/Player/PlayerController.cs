@@ -9,7 +9,6 @@ public class PlayerController : MonoBehaviour
 
     [Header("Bars")]
     [SerializeField] Fillbar healthBar;
-    [SerializeField] Fillbar energyBar;
 
     [Header("Cameras")]
     [SerializeField] private GameObject firstPersonCamera;

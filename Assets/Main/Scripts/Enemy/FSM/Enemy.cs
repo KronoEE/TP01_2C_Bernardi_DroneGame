@@ -122,24 +122,29 @@ namespace FSM
             bool cooldownOk = LastAttackTime + AttackCooldown <= Time.time;
             bool inRange = IsInAttackRange;
 
-            Debug.Log($"ShouldAttack → CooldownOK: {cooldownOk} | InRange: {inRange}");
-
             return cooldownOk && inRange;
         }
-        private bool IsWithinIdleRange(Transition<EnemyState> Transition) =>
-            Vector3.Distance(Player.transform.position, transform.position) <= Agent.stoppingDistance;
-        private bool IsNotWithinIdleRange(Transition<EnemyState> Transition) =>
-            !IsWithinIdleRange(Transition);
+        private bool IsWithinIdleRange(Transition<EnemyState> Transition)
+        {
+            if (Player == null) return true;
+            return Vector3.Distance(Player.transform.position, transform.position) <= Agent.stoppingDistance;
+        }
+
+        private bool IsNotWithinIdleRange(Transition<EnemyState> Transition)
+        {
+            if (Player == null) return false;
+            return !IsWithinIdleRange(Transition);
+        }
         private void RangeAttackPlayerSensor_OnPlayerEnter(Transform Player) => IsInAttackRange = true;
         private void RangeAttackPlayerSensor_OnPlayerExit(Vector3 LastKnownPosition) => IsInAttackRange = false;
         private void OnAttack(State<EnemyState, StateEvent> State)
         {
+            if (Player == null) return;
+
             LastAttackTime = Time.time;
 
             Vector3 targetPosition = Player.transform.position + Vector3.up * 0.5f;
             transform.LookAt(targetPosition);
-
-            Debug.Log($"WandTip: {WandTip}");
 
             EnemyBullet bullet = PoolManager.Instance.GetEnemyBullet();
 
@@ -152,9 +157,8 @@ namespace FSM
         private void Update()
         {
             if (EnemyFSM == null) return;
+            if (Player == null) return;
             EnemyFSM.OnLogic();
-
-            Debug.Log($"Estado actual FSM: {EnemyFSM.ActiveStateName} | InAttackRange: {IsInAttackRange} | Cooldown OK: {LastAttackTime + AttackCooldown <= Time.time}");
         }
         private void OnEnable()
         {
@@ -164,8 +168,19 @@ namespace FSM
             IsInChasingRange = false;
             LastAttackTime = 0f;
 
+            Player = PlayerController.Instance;
+
             if (EnemyFSM != null)
-                EnemyFSM.RequestStateChange(EnemyState.Patrol);
+            {
+                if (Player != null)
+                {
+                    InitializeFSM();
+                }
+                else
+                {
+                    EnemyFSM.RequestStateChange(EnemyState.Patrol);
+                }
+            }        
         }
         private void OnDie()
         {

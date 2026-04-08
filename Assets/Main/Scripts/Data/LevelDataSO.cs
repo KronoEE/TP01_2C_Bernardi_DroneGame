@@ -6,4 +6,5 @@ public class LevelDataSO : ScriptableObject
     public string levelName;
     public string sceneName;
     public int enemiesToKill;
+    public bool autoAdvance;
 }

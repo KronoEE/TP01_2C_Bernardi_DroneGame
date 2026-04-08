@@ -14,6 +14,9 @@ public class AudioManager : MonoBehaviour
     public AudioClip LaserShootSfx;
     public AudioClip LauncherShootSfx;
     public AudioClip EnemyAttackSfx;
+    public AudioClip EnemyDeathSfx;
+    public AudioClip PlayerDamageSfx;
+    public AudioClip PlayerDeathSfx;
     [Header("-------- Audio Clip UI --------")]
     public AudioClip ButtonUI;
     public AudioClip HoverUi;

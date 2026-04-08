@@ -437,11 +437,14 @@ MonoBehaviour:
   musicSource: {fileID: 1937738267431058760}
   sfxSource: {fileID: 3382255160646374024}
   uiSource: {fileID: 1494893168390004723}
-  backgroundMusic: {fileID: 0}
-  WinSfx: {fileID: 0}
-  LooseSfx: {fileID: 0}
-  LaserShootSfx: {fileID: 0}
-  LauncherShootSfx: {fileID: 0}
-  EnemyAttackSfx: {fileID: 0}
-  ButtonUI: {fileID: 0}
-  HoverUi: {fileID: 0}
+  backgroundMusic: {fileID: 8300000, guid: 5a1944aa7c9b294499f993b3c5b484f5, type: 3}
+  WinSfx: {fileID: 8300000, guid: 4dbfbd1a56081db4ca174255a4d56b1f, type: 3}
+  LooseSfx: {fileID: 8300000, guid: d53668532248b664dbcbd4bfd2b77c2b, type: 3}
+  LaserShootSfx: {fileID: 8300000, guid: 2f9e9565a84c7b944bd1d7a92f247e48, type: 3}
+  LauncherShootSfx: {fileID: 8300000, guid: 1cb99875ecfebd743b43d0abf5cf0284, type: 3}
+  EnemyAttackSfx: {fileID: 8300000, guid: 552544cda9237244aa36d465bc4de3bb, type: 3}
+  EnemyDeathSfx: {fileID: 8300000, guid: 566d2ea6240b489479a6e9fd608c2621, type: 3}
+  PlayerDamageSfx: {fileID: 8300000, guid: 8e6bdf51e1b932e4eb6a3a9fbf8dfe7d, type: 3}
+  PlayerDeathSfx: {fileID: 8300000, guid: 35ce408210dfa9843ba14da86f8efb4e, type: 3}
+  ButtonUI: {fileID: 8300000, guid: 08df2896628964847a14d818d1864858, type: 3}
+  HoverUi: {fileID: 8300000, guid: dda43e48b5fd01147b0580f40165437b, type: 3}

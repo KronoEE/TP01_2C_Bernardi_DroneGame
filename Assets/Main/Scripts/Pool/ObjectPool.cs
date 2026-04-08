@@ -49,6 +49,14 @@ public class ObjectPool<T> where T : MonoBehaviour
         obj.gameObject.SetActive(false);
         obj.transform.SetParent(container);
     }
+    public void ReturnAll()
+    {
+        foreach (T obj in pool)
+        {
+            if (obj != null && obj.gameObject.activeInHierarchy)
+                obj.gameObject.SetActive(false);
+        }
+    }
     public int ActiveCount()
     {
         int count = 0;

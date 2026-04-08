@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PoolManager : MonoBehaviour
 {
@@ -43,7 +44,26 @@ public class PoolManager : MonoBehaviour
         CreateContainers();
         InitializePools();
     }
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
 
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        ReturnAllToPool();
+    }
+    private void ReturnAllToPool()
+    {
+        enemyBulletPool?.ReturnAll();
+        playerRocketPool?.ReturnAll();
+        enemyPool?.ReturnAll();
+        civilPool?.ReturnAll();
+    }
     private void CreateContainers()
     {
         enemyBulletContainer = CreateContainer("EnemyBullets");

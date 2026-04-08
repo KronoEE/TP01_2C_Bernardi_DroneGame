@@ -1,6 +1,7 @@
+using System.Collections;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance { get; private set; }
@@ -14,6 +15,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject gameOverPanel;
 
     private int enemiesKilled = 0;
+    private bool levelCompleted = false;
     private LevelDataSO CurrentLevel => levels[currentLevelIndex];
 
     private void Awake()
@@ -41,32 +43,73 @@ public class LevelManager : MonoBehaviour
         if (ScoreSystem.Instance != null)
             ScoreSystem.Instance.onScoreChanged -= CheckVictoryCondition;
     }
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
     public void OnEnemyKilled()
     {
+        if (levelCompleted) return;
         enemiesKilled++;
-        Debug.Log($"Enemigos eliminados: {enemiesKilled}/{CurrentLevel.enemiesToKill}");
-
         if (enemiesKilled >= CurrentLevel.enemiesToKill)
             Victory();
     }
     private void CheckVictoryCondition(int newScore)
     {
-        if (enemiesKilled >= CurrentLevel.enemiesToKill)
-            Victory();
+
     }
     public void Victory()
     {
-        Debug.Log($"Nivel {CurrentLevel.levelName} completado!");
+        if (levelCompleted) return;
+        levelCompleted = true;
+
+        if (CurrentLevel.autoAdvance)
+        {
+            LoadNextLevel();
+        }
+        else
+        {
+            Time.timeScale = 0f;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+
+            if (victoryPanel != null)
+                victoryPanel.SetActive(true);
+        }
+    }
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        levelCompleted = false;
+        enemiesKilled = 0;
+        Time.timeScale = 1f;
+
+        foreach (GameObject obj in Resources.FindObjectsOfTypeAll<GameObject>())
+        {
+            if (obj.scene != scene) continue;
+            if (obj.name == "VictoryPanel") victoryPanel = obj;
+            if (obj.name == "DeathPanel") gameOverPanel = obj;
+        }
+
+        if (victoryPanel != null) victoryPanel.SetActive(false);
+        if (gameOverPanel != null) gameOverPanel.SetActive(false);
+
+        if (ScoreSystem.Instance != null)
+            ScoreSystem.Instance.onScoreChanged += CheckVictoryCondition;
+    }
+    private IEnumerator LoadNextLevelDelayed(float delay)
+    {
+        yield return new WaitForSeconds(delay);
         Time.timeScale = 0f;
-
-        if (victoryPanel != null)
-            victoryPanel.SetActive(true);
-
-        Invoke(nameof(LoadNextLevel), 3f);
+        LoadNextLevel();
     }
     public void LoadNextLevel()
     {
         Time.timeScale = 1f;
+        enemiesKilled = 0;
 
         int nextIndex = currentLevelIndex + 1;
 
@@ -85,6 +128,8 @@ public class LevelManager : MonoBehaviour
         Time.timeScale = 0f;
         if (gameOverPanel != null)
             gameOverPanel.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
     public void RestartLevel()
     {

@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4233198117915104269
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5926616409115927239}
+  - component: {fileID: 8763556175601338923}
+  m_Layer: 0
+  m_Name: PoolManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5926616409115927239
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4233198117915104269}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 65.80486, y: 3.46396, z: 32.28049}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8763556175601338923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4233198117915104269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8b8f110baa191a4b8a3c9d7db5015ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PoolManager
+  enemyBulletPrefab: {fileID: 3210959107105654627, guid: bcc48ae55ace90544aa2a7f5d11fc97f, type: 3}
+  playerRocketPrefab: {fileID: 5445773897469742964, guid: 3a66dc49935640843a7fa53a6932586b, type: 3}
+  enemyPrefab: {fileID: 6323985708802442372, guid: 2de0cda7423181b40b9a7c71aa12f09c, type: 3}
+  civilPrefab: {fileID: 2366749363757854488, guid: 4fba66f8a51419c43b1ca51fe8f18761, type: 3}
+  maxEnemyBullets: 20
+  maxPlayerRockets: 10
+  maxEnemies: 10
+  maxCivilians: 15

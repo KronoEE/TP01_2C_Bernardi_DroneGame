@@ -20,6 +20,7 @@ namespace FSM
         }
         public override void OnLogic()
         {
+            if (Enemy.Player == null) return;
             base.OnLogic();
             if (!RequestedExit)
             {

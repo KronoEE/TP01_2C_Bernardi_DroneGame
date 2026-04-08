@@ -40,7 +40,6 @@ public class HealthSystem : MonoBehaviour, IDamageable
         {
             onLifeChanged?.Invoke(currentHealth, maxHealth);
         }
-        Debug.Log($"{gameObject.name} took {damage} damage. Current health: {currentHealth}/{maxHealth}");
     }
     public void ResetHealth()
     {
