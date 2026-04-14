@@ -53,6 +53,7 @@ public class PauseGame : MonoBehaviour
     private void ResumeGame()
     {
         audioManager.PlayUI(audioManager.ButtonUI);
+        PlayerController.Instance.OnGameResumed();
         pauseMenu.SetActive(false);
         Time.timeScale = 1;
         isPaused = false;

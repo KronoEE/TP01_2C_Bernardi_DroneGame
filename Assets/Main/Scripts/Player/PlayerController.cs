@@ -131,12 +131,25 @@ public class PlayerController : MonoBehaviour
         audioManager.PlaySFX(audioManager.PlayerDeathSfx);
         Debug.Log("Player has died.");
         currentHealth = 0;
+
+        rb.linearVelocity = Vector3.zero;
+        rb.isKinematic = true;
+        enabled = false;
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
         LevelManager.Instance?.GameOver();
-        gameObject.SetActive(false);
     }
     private void OnLifeChanged(float currentHealth, float maxHealth)
     {
         if (healthBar != null)
             healthBar.UpdateBars(maxHealth, currentHealth);
+    }
+    public void OnGameResumed()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        enabled = true;
     }
 }

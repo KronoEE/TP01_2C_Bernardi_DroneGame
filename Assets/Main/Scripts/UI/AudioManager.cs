@@ -44,16 +44,19 @@ public class AudioManager : MonoBehaviour
     public void PlaySFX(AudioClip clip)
     {
         // Play a one-shot sound effect
+        if (sfxSource == null || clip == null) return;
         sfxSource.PlayOneShot(clip);
     }
     public void PlayUI(AudioClip clip)
     {
         // Play a one-shot UI sound effect
+        if (sfxSource == null || clip == null) return;
         uiSource.PlayOneShot(clip);
     }
     public void PlayLoopedSfx(AudioClip clip)
     {
         // Play a looped sound effect
+        if (sfxSource == null || clip == null) return;
         sfxSource.clip = clip;
         sfxSource.loop = true;
         sfxSource.Play();

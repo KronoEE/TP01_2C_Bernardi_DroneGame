@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class LaserShoot : MonoBehaviour
 {
@@ -22,7 +23,10 @@ public class LaserShoot : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
+            return;
+
+        if (Input.GetMouseButtonDown(0))
         {
             Shoot();
         }
