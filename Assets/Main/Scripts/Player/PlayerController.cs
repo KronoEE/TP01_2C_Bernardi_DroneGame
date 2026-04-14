@@ -10,9 +10,11 @@ public class PlayerController : MonoBehaviour
     [Header("Bars")]
     [SerializeField] Fillbar healthBar;
 
-    [Header("Cameras")]
+    [Header("Cameras & Audio Listeners")]
     [SerializeField] private GameObject firstPersonCamera;
     [SerializeField] private GameObject thirdPersonCamera;
+    [SerializeField] private AudioListener firstPersonListener;
+    [SerializeField] private AudioListener thirdPersonListener;
 
     [Header("References")]
     [SerializeField] private HealthSystem healthSystem;
@@ -66,6 +68,10 @@ public class PlayerController : MonoBehaviour
             isFirstPerson = !isFirstPerson;
             firstPersonCamera.SetActive(isFirstPerson);
             thirdPersonCamera.SetActive(!isFirstPerson);
+
+            // Activating/Deactivating audio listeners based on the active camera
+            firstPersonListener.enabled = isFirstPerson;
+            thirdPersonListener.enabled = !isFirstPerson;
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
