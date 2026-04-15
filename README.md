@@ -1,4 +1,4 @@
-# TP07Integrador_C1_Bernardi_Dronner
+# TP01_2C_Bernardi_DroneGame
 
 Dronner es un juego de acción en 3D desarrollado en Unity, donde controlás un dron de combate en misiones de alta precisión.
 
