@@ -47,7 +47,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -437,7 +437,7 @@ MonoBehaviour:
   musicSource: {fileID: 1937738267431058760}
   sfxSource: {fileID: 3382255160646374024}
   uiSource: {fileID: 1494893168390004723}
-  backgroundMusic: {fileID: 8300000, guid: 5a1944aa7c9b294499f993b3c5b484f5, type: 3}
+  backgroundMusic: {fileID: 8300000, guid: 75809951836972743baf521ade23dca0, type: 3}
   WinSfx: {fileID: 8300000, guid: 4dbfbd1a56081db4ca174255a4d56b1f, type: 3}
   LooseSfx: {fileID: 8300000, guid: d53668532248b664dbcbd4bfd2b77c2b, type: 3}
   LaserShootSfx: {fileID: 8300000, guid: 2f9e9565a84c7b944bd1d7a92f247e48, type: 3}

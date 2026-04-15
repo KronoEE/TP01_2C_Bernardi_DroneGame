@@ -377,7 +377,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &13771768434865699
 Transform:
   m_ObjectHideFlags: 0
@@ -708,6 +708,8 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   firstPersonCamera: {fileID: 5084977635034819262}
   thirdPersonCamera: {fileID: 4102293637103994563}
+  firstPersonListener: {fileID: 3976141024190718937}
+  thirdPersonListener: {fileID: 6875189007840950097}
   healthSystem: {fileID: 841303453258514033}
 --- !u!114 &7495170102666357610
 MonoBehaviour:

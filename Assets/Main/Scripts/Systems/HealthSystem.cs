@@ -14,7 +14,6 @@ public class HealthSystem : MonoBehaviour, IDamageable
     private void Awake()
     {
         currentHealth = maxHealth;
-
     }
     private void Start()
     {
